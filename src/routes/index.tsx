@@ -20,6 +20,7 @@ import clientRoulette from "@/assets/clients/client-roulette.jpg.asset.json";
 import clientCamera from "@/assets/clients/client-camera.jpg.asset.json";
 import clientWalkthrough from "@/assets/clients/client-walkthrough.jpg.asset.json";
 import brandLogo from "@/assets/bitdecentro-logo.png.asset.json";
+import brandMark from "@/assets/bitdecentro-mark.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,7 +44,20 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-display selection:bg-accent/30 overflow-x-hidden">
+    <div className="relative min-h-screen bg-background text-foreground font-display selection:bg-accent/30 overflow-x-hidden">
+      {/* Brand watermark — fixed, behind all content */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center"
+      >
+        <img
+          src={brandMark.url}
+          alt=""
+          className="w-[70vw] max-w-[900px] opacity-[0.04] select-none"
+          style={{ filter: "blur(0.5px)" }}
+        />
+      </div>
+      <div className="relative z-10">
       <Nav />
       <Hero />
       <TrustStrip />
@@ -59,6 +73,7 @@ function Landing() {
       <Partnership />
       <FinalCTA />
       <Footer />
+      </div>
     </div>
   );
 }
