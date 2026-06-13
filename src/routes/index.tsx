@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroRoulette from "@/assets/hero-roulette.jpg";
+import casinoFloor from "@/assets/casino-floor.jpg";
 import dashboardImg from "@/assets/dashboard.jpg";
 import liveStudioImg from "@/assets/live-studio.jpg";
 import securityImg from "@/assets/security.jpg";
@@ -234,71 +235,155 @@ function TrustStrip() {
 function Ownership() {
   const pillars = [
     {
-      icon: "🏷️",
+      n: "01",
+      kicker: "Brand",
       title: "Your Brand Identity",
       desc: "Custom casino design, logo, UI, and player experience built to your exact specifications. Every pixel is yours.",
       color: "magenta",
+      stat: "100%",
+      statLabel: "White-label",
     },
     {
-      icon: "🗄️",
+      n: "02",
+      kicker: "Players",
       title: "Your Player Database",
       desc: "Complete ownership of users, analytics, and customer relationships. No shared data pools, no third-party access.",
       color: "cyan",
+      stat: "0",
+      statLabel: "Data shared",
     },
     {
-      icon: "🔌",
+      n: "03",
+      kicker: "Tech",
       title: "Your Technology Stack",
       desc: "Scalable infrastructure that can evolve into APIs and white-label products — under your control, on your roadmap.",
       color: "emerald",
+      stat: "∞",
+      statLabel: "Extensible",
     },
   ];
 
   return (
-    <section className="py-28 px-6 bg-surface">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-20 max-w-3xl">
-          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
-            01 · Sovereignty
+    <section id="ownership" className="relative px-6 py-32 overflow-hidden border-y border-border">
+      {/* Casino floor background */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={casinoFloor}
+          alt="Luxury casino floor with poker tables and chips"
+          width={1920}
+          height={1080}
+          loading="lazy"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/75 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-background/90" />
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.05] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-12 mb-20 items-end">
+          <div>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-accent" />
+              <span className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em]">
+                01 · Sovereignty
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02]">
+              Own the <span className="text-magenta">Brand</span>.
+              <br />
+              Own the <span className="text-cyan">Players</span>.
+              <br />
+              Own the{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: "var(--gradient-spectrum)" }}
+              >
+                Technology
+              </span>.
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
-            Own the Brand. Own the Players.{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: "var(--gradient-spectrum)" }}
-            >
-              Own the Technology.
-            </span>
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Bitdecentro helps casino operators build a fully owned gaming ecosystem — not just
-            another rented platform. Break free from vendor lock-in.
-          </p>
+          <div className="lg:pl-12 lg:border-l border-border-strong">
+            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-6">
+              Bitdecentro helps casino operators build a fully owned gaming ecosystem —
+              not just another rented platform. Break free from vendor lock-in.
+            </p>
+            <div className="flex items-center gap-6 font-mono text-[11px] uppercase tracking-widest">
+              <div className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-emerald animate-pulse" />
+                <span className="text-emerald">Operator-owned</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-destructive" />
+                <span className="text-muted-foreground line-through">Vendor-locked</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {pillars.map((p, idx) => (
+        {/* Pillar cards */}
+        <div className="grid md:grid-cols-3 gap-px bg-border border border-border-strong">
+          {pillars.map((p) => (
             <div
               key={p.title}
-              className="group relative p-8 border border-border bg-background hover:border-transparent transition-all overflow-hidden"
+              className="group relative p-8 md:p-10 bg-background/85 backdrop-blur-md hover:bg-surface/95 transition-all overflow-hidden"
             >
               <div
-                className="absolute inset-x-0 top-0 h-1"
+                className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                 style={{ background: `var(--${p.color})` }}
               />
               <div
-                className="absolute -bottom-20 -right-20 size-48 rounded-full opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-500"
+                className="absolute -bottom-32 -right-32 size-64 rounded-full opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-700"
                 style={{ background: `var(--${p.color})` }}
               />
-              <div className="text-3xl mb-6 transition-transform duration-500 group-hover:scale-110 relative">
-                {p.icon}
+
+              <div className="flex items-start justify-between mb-10 relative">
+                <span
+                  className="font-mono text-[10px] uppercase tracking-[0.3em]"
+                  style={{ color: `var(--${p.color})` }}
+                >
+                  /{p.n} · {p.kicker}
+                </span>
+                <div
+                  className="text-right"
+                  style={{ color: `var(--${p.color})` }}
+                >
+                  <div className="text-3xl font-extrabold leading-none">{p.stat}</div>
+                  <div className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
+                    {p.statLabel}
+                  </div>
+                </div>
               </div>
-              <h3 className="text-base font-bold mb-3 uppercase tracking-wider relative">{p.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed relative">{p.desc}</p>
-              <div
-                className="absolute top-4 right-4 text-[10px] font-mono opacity-60"
-                style={{ color: `var(--${p.color})` }}
-              >
-                /0{idx + 1}
+
+              <h3 className="text-2xl font-extrabold mb-4 tracking-tight relative leading-tight">
+                {p.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed relative mb-8">
+                {p.desc}
+              </p>
+
+              <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest relative">
+                <span
+                  className="transition-all"
+                  style={{ color: `var(--${p.color})` }}
+                >
+                  Read protocol
+                </span>
+                <span
+                  className="transition-transform group-hover:translate-x-1"
+                  style={{ color: `var(--${p.color})` }}
+                >
+                  →
+                </span>
               </div>
             </div>
           ))}
