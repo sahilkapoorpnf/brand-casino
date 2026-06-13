@@ -1539,10 +1539,10 @@ function Partnership() {
           <PricingCard
             phase="Phase 02 · Growth"
             title="Scale Package"
-            price="$100,000 setup"
+            price="$90,000 setup"
             desc="Expanded game library and lower revenue share for high-growth operators."
             features={[
-              "One-time setup cost — $100,000",
+              "One-time setup cost — $90,000",
               "12 Casino Games included",
               "$3,000 / month tech maintenance",
               "White label with your own branding",
