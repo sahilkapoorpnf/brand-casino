@@ -430,8 +430,18 @@ function AIFeatures() {
     { icon: "💬", title: "AI Support & Personalization", desc: "Automated support, recommendations, and smart bonus delivery." },
   ];
   return (
-    <section id="ai" className="py-28 px-6 bg-surface">
-      <div className="max-w-7xl mx-auto">
+    <section id="ai" className="relative py-28 px-6 bg-surface overflow-hidden">
+      <img
+        src={aiLayerImg}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        width={1400}
+        height={1000}
+        className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/60 to-surface" />
+      <div className="relative max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
           <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
             05 · Future-Ready with AI
@@ -445,7 +455,7 @@ function AIFeatures() {
           {items.map((i) => (
             <div
               key={i.title}
-              className="p-7 bg-background border border-border hover:border-accent/40 transition-colors group"
+              className="p-7 bg-background/80 backdrop-blur-sm border border-border hover:border-accent/40 transition-colors group"
             >
               <div className="text-3xl mb-5 group-hover:scale-110 transition-transform duration-500">
                 {i.icon}
@@ -454,6 +464,112 @@ function AIFeatures() {
               <p className="text-xs text-muted-foreground leading-relaxed">{i.desc}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DashboardShowcase() {
+  return (
+    <section className="py-28 px-6 border-t border-border bg-background">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+          <div>
+            <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
+              Console · Operator View
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
+              Every metric. <br />
+              <span className="text-accent">Every player. Every dollar.</span>
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              A single source of truth across your entire operation — revenue, retention, risk, and
+              real-time player behavior. Built for operators who run their floors like a hedge fund
+              runs its book.
+            </p>
+            <div className="grid grid-cols-2 gap-6 font-mono">
+              <Stat label="GGR Lift" value="+34%" />
+              <Stat label="VIP Retention" value="92%" />
+              <Stat label="Fraud Caught" value="99.4%" />
+              <Stat label="Time-to-Insight" value="<1s" />
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-6 bg-accent/10 blur-3xl rounded-full" />
+            <div className="relative border border-border-strong rounded-sm overflow-hidden shadow-glow">
+              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-surface">
+                <div className="size-2.5 rounded-full bg-destructive/70" />
+                <div className="size-2.5 rounded-full bg-accent/70" />
+                <div className="size-2.5 rounded-full bg-accent" />
+                <div className="ml-auto text-[10px] font-mono text-muted-foreground tracking-widest">
+                  console.bitdecentro.io
+                </div>
+              </div>
+              <img
+                src={dashboardImg}
+                alt="Bitdecentro operator dashboard with live casino analytics"
+                loading="lazy"
+                width={1600}
+                height={1000}
+                className="w-full h-auto block"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border-l-2 border-accent pl-4">
+      <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">
+        {label}
+      </div>
+      <div className="text-2xl font-bold text-foreground">{value}</div>
+    </div>
+  );
+}
+
+function LiveStudio() {
+  return (
+    <section className="relative py-32 px-6 overflow-hidden border-t border-border">
+      <img
+        src={liveStudioImg}
+        alt="Live casino broadcast studio with cameras and roulette table"
+        loading="lazy"
+        width={1600}
+        height={1000}
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+      <div className="relative max-w-7xl mx-auto">
+        <div className="max-w-xl">
+          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
+            On-Air · Broadcast-Grade
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
+            Your studio. <br />
+            <span className="text-accent">Your show. Your house edge.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg mb-8">
+            Bitdecentro engineers the entire live-casino stack — OBS / VMIX pipelines, custom
+            studio buildouts, multi-camera rigs, and dealer interfaces. Broadcast-grade production
+            without the broadcast-network overhead.
+          </p>
+          <div className="flex flex-wrap gap-6 font-mono text-xs">
+            <span className="text-muted-foreground">
+              <span className="text-accent">4K</span> Multi-cam
+            </span>
+            <span className="text-muted-foreground">
+              <span className="text-accent">&lt;180ms</span> Latency
+            </span>
+            <span className="text-muted-foreground">
+              <span className="text-accent">24/7</span> Operation
+            </span>
+          </div>
         </div>
       </div>
     </section>
