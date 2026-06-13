@@ -68,10 +68,7 @@ function Nav() {
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
-          <div
-            className="size-6 rounded-sm rotate-45"
-            style={{ background: "var(--gradient-spectrum)" }}
-          />
+          <img src={brandLogo.url} alt="Bitdecentro" className="h-8 w-auto" />
           <span className="font-extrabold tracking-tighter text-lg">BITDECENTRO</span>
         </a>
         <div className="hidden md:flex gap-8 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
