@@ -21,7 +21,7 @@ import clientCamera from "@/assets/clients/client-camera.jpg.asset.json";
 import clientWalkthrough from "@/assets/clients/client-walkthrough.jpg.asset.json";
 import brandLogo from "@/assets/bitdecentro-logo.png.asset.json";
 import brandMark from "@/assets/bitdecentro-mark.png.asset.json";
-import casinoBg from "@/assets/casino-bg.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
