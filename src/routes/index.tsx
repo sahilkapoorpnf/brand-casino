@@ -1577,6 +1577,7 @@ function PricingCard({
   title,
   price,
   desc,
+  features,
   cta,
   color,
   featured,
@@ -1585,6 +1586,7 @@ function PricingCard({
   title: string;
   price: string;
   desc: string;
+  features?: string[];
   cta: string;
   color: string;
   featured?: boolean;
@@ -1619,8 +1621,21 @@ function PricingCard({
         {phase}
       </span>
       <h3 className="relative text-2xl md:text-3xl font-extrabold mb-2 tracking-tight">{title}</h3>
-      <div className="relative text-base font-mono mb-8" style={{ color: `var(--${color})` }}>{price}</div>
-      <p className="relative text-sm text-muted-foreground leading-relaxed mb-10">{desc}</p>
+      <div className="relative text-base font-mono mb-6" style={{ color: `var(--${color})` }}>{price}</div>
+      <p className="relative text-sm text-muted-foreground leading-relaxed mb-6">{desc}</p>
+      {features && features.length > 0 && (
+        <ul className="relative space-y-3 mb-8">
+          {features.map((f) => (
+            <li key={f} className="flex items-start gap-3 text-sm">
+              <span
+                className="mt-[7px] inline-block size-1.5 rounded-full shrink-0"
+                style={{ background: `var(--${color})` }}
+              />
+              <span className="text-foreground/90 leading-snug">{f}</span>
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="relative mt-auto pt-8 border-t border-border">
         <button
           className="w-full py-3 text-[10px] font-bold uppercase tracking-widest transition-all hover:opacity-90"
