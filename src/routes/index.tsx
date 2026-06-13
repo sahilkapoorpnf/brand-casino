@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroRoulette from "@/assets/hero-roulette.jpg";
-import casinoCoins from "@/assets/casino-coins.png.asset.json";
 import casinoFloor from "@/assets/casino-floor.jpg";
 import ecosystemBg from "@/assets/ecosystem-bg.jpg";
 import dashboardImg from "@/assets/dashboard.jpg";
@@ -130,19 +129,6 @@ function Hero() {
               "linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px)",
             backgroundSize: "64px 64px",
           }}
-        />
-        {/* Casino coins overlay */}
-        <img
-          src={casinoCoins.url}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 w-full h-full object-cover object-right opacity-60 mix-blend-screen pointer-events-none"
-        />
-        <img
-          src={casinoCoins.url}
-          alt=""
-          aria-hidden
-          className="absolute -bottom-10 -left-10 w-[55%] max-w-[700px] opacity-40 -rotate-12 pointer-events-none"
         />
       </div>
 
