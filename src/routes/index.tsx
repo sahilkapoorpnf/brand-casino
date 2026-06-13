@@ -19,6 +19,7 @@ import clientMeeting from "@/assets/clients/client-meeting.jpg.asset.json";
 import clientRoulette from "@/assets/clients/client-roulette.jpg.asset.json";
 import clientCamera from "@/assets/clients/client-camera.jpg.asset.json";
 import clientWalkthrough from "@/assets/clients/client-walkthrough.jpg.asset.json";
+import brandLogo from "@/assets/bitdecentro-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
