@@ -545,54 +545,138 @@ function Showcase() {
 
 function Comparison() {
   const rows = [
-    ["Ownership Model", "Pay forever", "Build an owned asset"],
-    ["UI/UX Control", "Limited customization", "Fully customizable"],
-    ["Architecture", "Vendor dependency", "Technology independence"],
-    ["External Connectivity", "Restricted integrations", "Open API architecture"],
-    ["Data Governance", "Data controlled externally", "Data controlled by you"],
-    ["Growth Vector", "Hard to scale", "Designed for expansion"],
-    ["Exit Potential", "Zero IP value", "High IP valuation"],
+    { feature: "Ownership Model", icon: "◈", trad: "Pay forever", ours: "Build an owned asset" },
+    { feature: "UI/UX Control", icon: "✦", trad: "Limited customization", ours: "Fully customizable" },
+    { feature: "Architecture", icon: "▣", trad: "Vendor dependency", ours: "Technology independence" },
+    { feature: "External Connectivity", icon: "⌘", trad: "Restricted integrations", ours: "Open API architecture" },
+    { feature: "Data Governance", icon: "◉", trad: "Data controlled externally", ours: "Data controlled by you" },
+    { feature: "Growth Vector", icon: "▲", trad: "Hard to scale", ours: "Designed for expansion" },
+    { feature: "Exit Potential", icon: "★", trad: "Zero IP value", ours: "High IP valuation" },
   ];
+
   return (
-    <section className="py-28 px-6 border-t border-border">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
-            style={{ color: "var(--emerald)" }}>
-            03 · Audit Log
+    <section className="relative py-32 px-6 border-t border-border overflow-hidden">
+      {/* Ambient backdrop */}
+      <div
+        aria-hidden
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[900px] rounded-full opacity-[0.08] blur-3xl pointer-events-none"
+        style={{ background: "radial-gradient(circle, var(--emerald), transparent 70%)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+
+      <div className="relative max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8 mb-16 items-end">
+          <div>
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="h-px w-10" style={{ background: "var(--emerald)" }} />
+              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.3em]" style={{ color: "var(--emerald)" }}>
+                03 · Audit Log
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+              Why Operators{" "}
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-spectrum)" }}>
+                Choose
+              </span>{" "}
+              This Model
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Why Operators Choose This Model
-          </h2>
+          <p className="text-muted-foreground text-base md:text-lg leading-relaxed lg:pl-12 lg:border-l border-border-strong">
+            A side-by-side audit of what you actually own when the contract ends.
+            Most platforms leave you with nothing. We leave you with infrastructure.
+          </p>
         </div>
 
-        <div className="border border-border bg-surface rounded-sm overflow-hidden overflow-x-auto">
-          <table className="w-full text-left border-collapse font-mono text-xs md:text-[13px] min-w-[640px]">
-            <thead>
-              <tr className="border-b border-border bg-surface-elevated">
-                <th className="p-5 font-bold text-muted-foreground uppercase tracking-widest">
-                  Feature Set
-                </th>
-                <th className="p-5 font-bold text-muted-foreground uppercase tracking-widest">
-                  Traditional Platform
-                </th>
-                <th className="p-5 font-bold uppercase tracking-widest" style={{ color: "var(--emerald)" }}>
-                  Bitdecentro
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {rows.map(([feature, traditional, ours]) => (
-                <tr key={feature} className="hover:bg-surface-elevated/50 transition-colors">
-                  <td className="p-5 text-foreground">{feature}</td>
-                  <td className="p-5 text-muted-foreground line-through decoration-destructive/40">
-                    {traditional}
-                  </td>
-                  <td className="p-5" style={{ color: "var(--emerald)" }}>{ours}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* VS Header bar */}
+        <div className="grid grid-cols-[1.4fr_1fr_1fr] gap-4 mb-3 font-mono text-[10px] uppercase tracking-[0.25em]">
+          <div className="text-muted-foreground px-2">Capability</div>
+          <div className="text-destructive/80 flex items-center gap-2 px-4">
+            <span className="size-1.5 rounded-full bg-destructive" />
+            Traditional Vendor
+          </div>
+          <div className="flex items-center gap-2 px-4" style={{ color: "var(--emerald)" }}>
+            <span className="size-1.5 rounded-full animate-pulse" style={{ background: "var(--emerald)" }} />
+            Bitdecentro Sovereign
+          </div>
+        </div>
+
+        {/* Row stack */}
+        <div className="space-y-2">
+          {rows.map((r, i) => (
+            <div
+              key={r.feature}
+              className="group grid grid-cols-[1.4fr_1fr_1fr] gap-4 items-stretch rounded-sm overflow-hidden border border-border hover:border-border-strong transition-colors"
+            >
+              {/* Feature label */}
+              <div className="flex items-center gap-4 p-5 bg-surface">
+                <span
+                  className="font-mono text-lg opacity-60"
+                  style={{ color: "var(--emerald)" }}
+                >
+                  {r.icon}
+                </span>
+                <div>
+                  <div className="text-[9px] font-mono text-muted-foreground uppercase tracking-widest">
+                    /{String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="text-sm md:text-base font-bold tracking-tight">{r.feature}</div>
+                </div>
+              </div>
+
+              {/* Traditional */}
+              <div className="relative p-5 bg-background flex items-center gap-3 border-l border-border">
+                <span className="text-destructive/70 font-bold text-lg leading-none">✕</span>
+                <span className="text-sm text-muted-foreground line-through decoration-destructive/40">
+                  {r.trad}
+                </span>
+              </div>
+
+              {/* Bitdecentro */}
+              <div
+                className="relative p-5 flex items-center gap-3 border-l border-border overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(90deg, color-mix(in oklab, var(--emerald) 10%, transparent), transparent)",
+                }}
+              >
+                <span className="text-base font-bold leading-none" style={{ color: "var(--emerald)" }}>
+                  ✓
+                </span>
+                <span className="text-sm font-medium" style={{ color: "var(--emerald)" }}>
+                  {r.ours}
+                </span>
+                <span
+                  className="absolute right-0 top-0 bottom-0 w-[2px] opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{ background: "var(--emerald)" }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer summary */}
+        <div className="mt-10 grid sm:grid-cols-3 gap-px bg-border border border-border-strong rounded-sm overflow-hidden">
+          {[
+            { k: "7/7", v: "Categories Won", c: "emerald" },
+            { k: "0%", v: "Vendor Lock-in", c: "cyan" },
+            { k: "100%", v: "IP Retained", c: "accent" },
+          ].map((s) => (
+            <div key={s.v} className="bg-surface p-6 text-center">
+              <div className="text-3xl font-extrabold" style={{ color: `var(--${s.c})` }}>{s.k}</div>
+              <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
+                {s.v}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
