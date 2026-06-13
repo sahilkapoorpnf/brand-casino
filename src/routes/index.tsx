@@ -21,6 +21,7 @@ import clientCamera from "@/assets/clients/client-camera.jpg.asset.json";
 import clientWalkthrough from "@/assets/clients/client-walkthrough.jpg.asset.json";
 import brandLogo from "@/assets/bitdecentro-logo.png.asset.json";
 import brandMark from "@/assets/bitdecentro-mark.png.asset.json";
+import casinoBg from "@/assets/casino-bg.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -60,6 +61,7 @@ function Landing() {
       <div className="relative z-10">
       <Nav />
       <Hero />
+      <CasinoGames />
       <TrustStrip />
       <Ownership />
       <Showcase />
@@ -234,6 +236,83 @@ function Metric({ label, value, color = "text-accent" }: { label: string; value:
     </div>
   );
 }
+
+function CasinoGames() {
+  const games = [
+    { name: "Live Roulette", tag: "European • American", icon: "🎯", accent: "from-accent/30 to-transparent" },
+    { name: "Blackjack", tag: "Multi-hand • VIP", icon: "🂡", accent: "from-emerald/30 to-transparent" },
+    { name: "Baccarat", tag: "Punto Banco • Squeeze", icon: "🂮", accent: "from-magenta/30 to-transparent" },
+    { name: "Texas Hold'em", tag: "Cash • Tournaments", icon: "♠", accent: "from-cyan/30 to-transparent" },
+    { name: "Slots & Megaways", tag: "10,000+ titles", icon: "🎰", accent: "from-accent/30 to-transparent" },
+    { name: "Crash & Crypto", tag: "Provably fair", icon: "🚀", accent: "from-magenta/30 to-transparent" },
+    { name: "Dice & Sic Bo", tag: "Instant-win", icon: "🎲", accent: "from-emerald/30 to-transparent" },
+  ];
+  return (
+    <section className="relative px-6 py-28 overflow-hidden border-b border-border">
+      {/* Background with cards & coins */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={casinoBg.url}
+          alt=""
+          loading="lazy"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--background))_85%)]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-accent/40 bg-accent/10 backdrop-blur-sm rounded-sm text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            Game Portfolio
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-5">
+            7 Casino Verticals.{" "}
+            <span className="bg-gradient-to-r from-accent via-cyan to-magenta bg-clip-text text-transparent">
+              One Platform.
+            </span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Every category your players expect — live dealers, RNG, crash, and crypto-native games — unified under your brand.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {games.map((g, i) => (
+            <div
+              key={g.name}
+              className={`group relative overflow-hidden rounded-lg border border-border-strong bg-surface/60 backdrop-blur-md p-6 transition-all duration-300 hover:border-accent/60 hover:-translate-y-1 hover:shadow-glow ${
+                i === 6 ? "col-span-2 md:col-span-1 lg:col-span-4 lg:flex lg:items-center lg:justify-between lg:gap-6 lg:p-8" : ""
+              }`}
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${g.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className="relative z-10 lg:flex lg:items-center lg:gap-5">
+                <div className="text-4xl mb-3 lg:mb-0">{g.icon}</div>
+                <div>
+                  <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                    0{i + 1}
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-1">{g.name}</h3>
+                  <p className="text-xs text-muted-foreground">{g.tag}</p>
+                </div>
+              </div>
+              {i === 6 && (
+                <div className="relative z-10 mt-4 lg:mt-0 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-widest text-accent">
+                  <span>All 7 verticals included</span>
+                  <span>→</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 function TrustStrip() {
   const logos = ["NEXUS GAMING", "ORION BET", "MERIDIAN CASINO", "AURUM PLAY", "SOLARIS LIVE", "VELOCITY 24"];
