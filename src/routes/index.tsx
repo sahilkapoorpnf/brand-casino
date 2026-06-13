@@ -69,7 +69,6 @@ function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
           <img src={brandLogo.url} alt="Bitdecentro" className="h-8 w-auto" />
-          <span className="font-extrabold tracking-tighter text-lg">BITDECENTRO</span>
         </a>
         <div className="hidden md:flex gap-8 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
           <a href="#showcase" className="hover:text-accent transition-colors">Showcase</a>
