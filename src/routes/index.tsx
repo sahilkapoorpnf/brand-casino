@@ -31,8 +31,10 @@ function Landing() {
       <Nav />
       <Hero />
       <Ownership />
+      <DashboardShowcase />
       <Comparison />
       <Ecosystem />
+      <LiveStudio />
       <Security />
       <AIFeatures />
       <Partnership />
