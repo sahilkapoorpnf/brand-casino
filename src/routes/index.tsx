@@ -1393,7 +1393,7 @@ function ClientShowcase() {
             <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/50 mb-1">
               Featured Client
             </div>
-            <div className="text-xl font-bold">NeoBet Live Studios — Tbilisi, Georgia</div>
+            <div className="text-xl font-bold">Happy Customer 🔒 — Europe <span className="text-[10px] font-mono uppercase tracking-wider text-foreground/50 ml-2">NDA Protected</span></div>
             <div className="text-sm text-foreground/60 mt-1">
               Full live casino stack · 18 tables · RNG + Wallet + AI risk · On-prem broadcast
             </div>
