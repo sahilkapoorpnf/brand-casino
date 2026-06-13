@@ -1387,7 +1387,7 @@ function ClientShowcase() {
             className="w-16 h-16 rounded-xl flex items-center justify-center font-extrabold text-2xl text-background"
             style={{ background: "var(--gradient-spectrum)" }}
           >
-            NB
+            HC
           </div>
           <div>
             <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/50 mb-1">
