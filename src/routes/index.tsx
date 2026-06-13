@@ -19,6 +19,7 @@ import clientMeeting from "@/assets/clients/client-meeting.jpg.asset.json";
 import clientRoulette from "@/assets/clients/client-roulette.jpg.asset.json";
 import clientCamera from "@/assets/clients/client-camera.jpg.asset.json";
 import clientWalkthrough from "@/assets/clients/client-walkthrough.jpg.asset.json";
+import brandLogo from "@/assets/bitdecentro-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -67,10 +68,7 @@ function Nav() {
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
-          <div
-            className="size-6 rounded-sm rotate-45"
-            style={{ background: "var(--gradient-spectrum)" }}
-          />
+          <img src={brandLogo.url} alt="Bitdecentro" className="h-8 w-auto" />
           <span className="font-extrabold tracking-tighter text-lg">BITDECENTRO</span>
         </a>
         <div className="hidden md:flex gap-8 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
@@ -1650,10 +1648,7 @@ function Footer() {
     <footer className="px-6 py-12 border-t border-border">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2.5">
-          <div
-            className="size-5 rounded-sm rotate-45"
-            style={{ background: "var(--gradient-spectrum)" }}
-          />
+          <img src={brandLogo.url} alt="Bitdecentro" className="h-6 w-auto" />
           <span className="text-[11px] font-bold uppercase tracking-[0.2em]">Bitdecentro</span>
         </div>
         <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest text-center">
