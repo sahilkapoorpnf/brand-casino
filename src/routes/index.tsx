@@ -370,30 +370,51 @@ function Security() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
-          <div className="bg-surface p-10">
-            <div className="text-3xl mb-6">🛡️</div>
-            <h3 className="text-xl font-bold mb-6 uppercase tracking-tight">Enterprise Protection</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              {["Device fingerprinting", "Bot detection", "IP intelligence", "Velocity monitoring", "Suspicious activity alerts"].map((i) => (
-                <li key={i} className="flex gap-3 items-baseline">
-                  <span className="text-accent text-xs">▣</span>
-                  <span>{i}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-px bg-border border border-border">
+          <div className="relative bg-surface overflow-hidden min-h-[400px]">
+            <img
+              src={securityImg}
+              alt="Cybersecurity shield network visualization"
+              loading="lazy"
+              width={1400}
+              height={1000}
+              className="absolute inset-0 w-full h-full object-cover opacity-70"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-surface via-surface/40 to-transparent" />
+            <div className="relative p-10 h-full flex flex-col justify-end">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">
+                Defense Layer · Active
+              </div>
+              <div className="text-3xl font-extrabold tracking-tight">
+                $4.2M+ <span className="text-muted-foreground text-base font-normal">in fraud prevented YTD</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-surface p-10">
-            <div className="text-3xl mb-6">📊</div>
-            <h3 className="text-xl font-bold mb-6 uppercase tracking-tight">Business Outcomes</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              {["Reduce fraud losses", "Protect player funds", "Maintain platform integrity", "Strengthen compliance readiness", "Improve operational visibility"].map((i) => (
-                <li key={i} className="flex gap-3 items-baseline">
-                  <span className="text-accent text-xs">▣</span>
-                  <span>{i}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid md:grid-cols-2 gap-px bg-border">
+            <div className="bg-surface p-10">
+              <div className="text-3xl mb-6">🛡️</div>
+              <h3 className="text-lg font-bold mb-6 uppercase tracking-tight">Enterprise Protection</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                {["Device fingerprinting", "Bot detection", "IP intelligence", "Velocity monitoring", "Suspicious activity alerts"].map((i) => (
+                  <li key={i} className="flex gap-3 items-baseline">
+                    <span className="text-accent text-xs">▣</span>
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-surface p-10">
+              <div className="text-3xl mb-6">📊</div>
+              <h3 className="text-lg font-bold mb-6 uppercase tracking-tight">Business Outcomes</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                {["Reduce fraud losses", "Protect player funds", "Maintain platform integrity", "Strengthen compliance readiness", "Improve operational visibility"].map((i) => (
+                  <li key={i} className="flex gap-3 items-baseline">
+                    <span className="text-accent text-xs">▣</span>
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
