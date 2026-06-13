@@ -21,6 +21,7 @@ import clientCamera from "@/assets/clients/client-camera.jpg.asset.json";
 import clientWalkthrough from "@/assets/clients/client-walkthrough.jpg.asset.json";
 import brandLogo from "@/assets/bitdecentro-logo.png.asset.json";
 import brandMark from "@/assets/bitdecentro-mark.png.asset.json";
+import { assetUrl } from "@/lib/asset-url";
 
 
 export const Route = createFileRoute("/")({
@@ -52,7 +53,7 @@ function Landing() {
         className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center"
       >
         <img
-          src={brandMark.url}
+          src={assetUrl(brandMark)}
           alt=""
           className="w-[70vw] max-w-[900px] opacity-[0.04] select-none"
           style={{ filter: "blur(0.5px)" }}
@@ -84,7 +85,7 @@ function Nav() {
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
-          <img src={brandLogo.url} alt="Bitdecentro" className="h-8 w-auto" />
+          <img src={assetUrl(brandLogo)} alt="Bitdecentro" className="h-8 w-auto" />
         </a>
         <div className="hidden md:flex gap-8 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
           <a href="#showcase" className="hover:text-accent transition-colors">Showcase</a>
@@ -1300,15 +1301,15 @@ function LiveStudio() {
 
 function ClientShowcase() {
   const gallery = [
-    { src: clientPartners.url, label: "Leadership Sync", tag: "On-site · Europe", span: "row-span-2" },
-    { src: clientStudio1.url, label: "Live Studio Floor", tag: "Studio 3 · Blackjack", span: "" },
-    { src: clientRoulette.url, label: "Roulette QA", tag: "Hardware Calibration", span: "" },
-    { src: clientTables.url, label: "Table Provisioning", tag: "18 Live Tables", span: "col-span-2" },
-    { src: clientCamera.url, label: "Camera Rig Tuning", tag: "Broadcast Setup", span: "" },
-    { src: clientWalkthrough.url, label: "Floor Walkthrough", tag: "Operations Review", span: "" },
-    { src: clientOps1.url, label: "NOC + Engineering", tag: "24/7 Monitoring", span: "" },
-    { src: clientTeam.url, label: "Delivery Team", tag: "On-prem Integration", span: "" },
-    { src: clientMeeting.url, label: "Strategy Session", tag: "Product Roadmap", span: "" },
+    { src: assetUrl(clientPartners), label: "Leadership Sync", tag: "On-site · Europe", span: "row-span-2" },
+    { src: assetUrl(clientStudio1), label: "Live Studio Floor", tag: "Studio 3 · Blackjack", span: "" },
+    { src: assetUrl(clientRoulette), label: "Roulette QA", tag: "Hardware Calibration", span: "" },
+    { src: assetUrl(clientTables), label: "Table Provisioning", tag: "18 Live Tables", span: "col-span-2" },
+    { src: assetUrl(clientCamera), label: "Camera Rig Tuning", tag: "Broadcast Setup", span: "" },
+    { src: assetUrl(clientWalkthrough), label: "Floor Walkthrough", tag: "Operations Review", span: "" },
+    { src: assetUrl(clientOps1), label: "NOC + Engineering", tag: "24/7 Monitoring", span: "" },
+    { src: assetUrl(clientTeam), label: "Delivery Team", tag: "On-prem Integration", span: "" },
+    { src: assetUrl(clientMeeting), label: "Strategy Session", tag: "Product Roadmap", span: "" },
   ];
 
   const reviews = [
@@ -1666,7 +1667,7 @@ function Footer() {
     <footer className="px-6 py-12 border-t border-border">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2.5">
-          <img src={brandLogo.url} alt="Bitdecentro" className="h-6 w-auto" />
+          <img src={assetUrl(brandLogo)} alt="Bitdecentro" className="h-6 w-auto" />
         </div>
         <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest text-center">
           © 2025 Bitdecentro Technology Infrastructure · Operator-Grade · All Rights Reserved
