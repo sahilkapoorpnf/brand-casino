@@ -1,4 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import heroVault from "@/assets/hero-vault.jpg";
+import dashboardImg from "@/assets/dashboard.jpg";
+import liveStudioImg from "@/assets/live-studio.jpg";
+import securityImg from "@/assets/security.jpg";
+import aiLayerImg from "@/assets/ai-layer.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,8 +31,10 @@ function Landing() {
       <Nav />
       <Hero />
       <Ownership />
+      <DashboardShowcase />
       <Comparison />
       <Ecosystem />
+      <LiveStudio />
       <Security />
       <AIFeatures />
       <Partnership />
@@ -79,8 +86,8 @@ function Hero() {
         className="absolute -top-1/3 left-1/2 -translate-x-1/2 size-[800px] rounded-full opacity-[0.08] blur-3xl"
         style={{ background: "radial-gradient(circle, var(--accent), transparent 70%)" }}
       />
-      <div className="max-w-7xl mx-auto relative">
-        <div className="max-w-[900px] animate-entrance">
+      <div className="max-w-7xl mx-auto relative grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+        <div className="animate-entrance">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/20 bg-accent-soft mb-8">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-75 animate-ping" />
@@ -91,7 +98,7 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-balance leading-[0.92] mb-8">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance leading-[0.92] mb-8">
             Bitdecentro — Your Technology Partner{" "}
             <span className="text-muted-foreground">for Your Own Brand</span>
           </h1>
@@ -119,6 +126,24 @@ function Hero() {
             >
               Schedule a Demo
             </a>
+          </div>
+        </div>
+
+        <div className="relative animate-entrance [animation-delay:200ms] hidden lg:block">
+          <div className="absolute -inset-8 bg-accent/10 blur-3xl rounded-full" />
+          <div className="relative border border-border-strong bg-surface overflow-hidden rounded-sm">
+            <img
+              src={heroVault}
+              alt="Bronze casino vault representing technology ownership"
+              width={1600}
+              height={1200}
+              className="w-full h-auto object-cover aspect-[4/5]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
+              <span className="text-muted-foreground">Asset_ID</span>
+              <span className="text-accent">BDC-VAULT-001</span>
+            </div>
           </div>
         </div>
       </div>
@@ -345,30 +370,51 @@ function Security() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
-          <div className="bg-surface p-10">
-            <div className="text-3xl mb-6">🛡️</div>
-            <h3 className="text-xl font-bold mb-6 uppercase tracking-tight">Enterprise Protection</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              {["Device fingerprinting", "Bot detection", "IP intelligence", "Velocity monitoring", "Suspicious activity alerts"].map((i) => (
-                <li key={i} className="flex gap-3 items-baseline">
-                  <span className="text-accent text-xs">▣</span>
-                  <span>{i}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-px bg-border border border-border">
+          <div className="relative bg-surface overflow-hidden min-h-[400px]">
+            <img
+              src={securityImg}
+              alt="Cybersecurity shield network visualization"
+              loading="lazy"
+              width={1400}
+              height={1000}
+              className="absolute inset-0 w-full h-full object-cover opacity-70"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-surface via-surface/40 to-transparent" />
+            <div className="relative p-10 h-full flex flex-col justify-end">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">
+                Defense Layer · Active
+              </div>
+              <div className="text-3xl font-extrabold tracking-tight">
+                $4.2M+ <span className="text-muted-foreground text-base font-normal">in fraud prevented YTD</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-surface p-10">
-            <div className="text-3xl mb-6">📊</div>
-            <h3 className="text-xl font-bold mb-6 uppercase tracking-tight">Business Outcomes</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              {["Reduce fraud losses", "Protect player funds", "Maintain platform integrity", "Strengthen compliance readiness", "Improve operational visibility"].map((i) => (
-                <li key={i} className="flex gap-3 items-baseline">
-                  <span className="text-accent text-xs">▣</span>
-                  <span>{i}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid md:grid-cols-2 gap-px bg-border">
+            <div className="bg-surface p-10">
+              <div className="text-3xl mb-6">🛡️</div>
+              <h3 className="text-lg font-bold mb-6 uppercase tracking-tight">Enterprise Protection</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                {["Device fingerprinting", "Bot detection", "IP intelligence", "Velocity monitoring", "Suspicious activity alerts"].map((i) => (
+                  <li key={i} className="flex gap-3 items-baseline">
+                    <span className="text-accent text-xs">▣</span>
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-surface p-10">
+              <div className="text-3xl mb-6">📊</div>
+              <h3 className="text-lg font-bold mb-6 uppercase tracking-tight">Business Outcomes</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                {["Reduce fraud losses", "Protect player funds", "Maintain platform integrity", "Strengthen compliance readiness", "Improve operational visibility"].map((i) => (
+                  <li key={i} className="flex gap-3 items-baseline">
+                    <span className="text-accent text-xs">▣</span>
+                    <span>{i}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -384,8 +430,18 @@ function AIFeatures() {
     { icon: "💬", title: "AI Support & Personalization", desc: "Automated support, recommendations, and smart bonus delivery." },
   ];
   return (
-    <section id="ai" className="py-28 px-6 bg-surface">
-      <div className="max-w-7xl mx-auto">
+    <section id="ai" className="relative py-28 px-6 bg-surface overflow-hidden">
+      <img
+        src={aiLayerImg}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        width={1400}
+        height={1000}
+        className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/60 to-surface" />
+      <div className="relative max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
           <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
             05 · Future-Ready with AI
@@ -399,7 +455,7 @@ function AIFeatures() {
           {items.map((i) => (
             <div
               key={i.title}
-              className="p-7 bg-background border border-border hover:border-accent/40 transition-colors group"
+              className="p-7 bg-background/80 backdrop-blur-sm border border-border hover:border-accent/40 transition-colors group"
             >
               <div className="text-3xl mb-5 group-hover:scale-110 transition-transform duration-500">
                 {i.icon}
@@ -408,6 +464,112 @@ function AIFeatures() {
               <p className="text-xs text-muted-foreground leading-relaxed">{i.desc}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DashboardShowcase() {
+  return (
+    <section className="py-28 px-6 border-t border-border bg-background">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+          <div>
+            <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
+              Console · Operator View
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
+              Every metric. <br />
+              <span className="text-accent">Every player. Every dollar.</span>
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              A single source of truth across your entire operation — revenue, retention, risk, and
+              real-time player behavior. Built for operators who run their floors like a hedge fund
+              runs its book.
+            </p>
+            <div className="grid grid-cols-2 gap-6 font-mono">
+              <Stat label="GGR Lift" value="+34%" />
+              <Stat label="VIP Retention" value="92%" />
+              <Stat label="Fraud Caught" value="99.4%" />
+              <Stat label="Time-to-Insight" value="<1s" />
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-6 bg-accent/10 blur-3xl rounded-full" />
+            <div className="relative border border-border-strong rounded-sm overflow-hidden shadow-glow">
+              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-surface">
+                <div className="size-2.5 rounded-full bg-destructive/70" />
+                <div className="size-2.5 rounded-full bg-accent/70" />
+                <div className="size-2.5 rounded-full bg-accent" />
+                <div className="ml-auto text-[10px] font-mono text-muted-foreground tracking-widest">
+                  console.bitdecentro.io
+                </div>
+              </div>
+              <img
+                src={dashboardImg}
+                alt="Bitdecentro operator dashboard with live casino analytics"
+                loading="lazy"
+                width={1600}
+                height={1000}
+                className="w-full h-auto block"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border-l-2 border-accent pl-4">
+      <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">
+        {label}
+      </div>
+      <div className="text-2xl font-bold text-foreground">{value}</div>
+    </div>
+  );
+}
+
+function LiveStudio() {
+  return (
+    <section className="relative py-32 px-6 overflow-hidden border-t border-border">
+      <img
+        src={liveStudioImg}
+        alt="Live casino broadcast studio with cameras and roulette table"
+        loading="lazy"
+        width={1600}
+        height={1000}
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+      <div className="relative max-w-7xl mx-auto">
+        <div className="max-w-xl">
+          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
+            On-Air · Broadcast-Grade
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
+            Your studio. <br />
+            <span className="text-accent">Your show. Your house edge.</span>
+          </h2>
+          <p className="text-muted-foreground text-lg mb-8">
+            Bitdecentro engineers the entire live-casino stack — OBS / VMIX pipelines, custom
+            studio buildouts, multi-camera rigs, and dealer interfaces. Broadcast-grade production
+            without the broadcast-network overhead.
+          </p>
+          <div className="flex flex-wrap gap-6 font-mono text-xs">
+            <span className="text-muted-foreground">
+              <span className="text-accent">4K</span> Multi-cam
+            </span>
+            <span className="text-muted-foreground">
+              <span className="text-accent">&lt;180ms</span> Latency
+            </span>
+            <span className="text-muted-foreground">
+              <span className="text-accent">24/7</span> Operation
+            </span>
+          </div>
         </div>
       </div>
     </section>
