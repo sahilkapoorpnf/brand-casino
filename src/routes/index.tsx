@@ -54,6 +54,7 @@ function Landing() {
       <LiveStudio />
       <Security />
       <AIFeatures />
+      <ClientShowcase />
       <Partnership />
       <FinalCTA />
       <Footer />
