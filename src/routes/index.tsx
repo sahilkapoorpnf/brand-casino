@@ -4,6 +4,10 @@ import dashboardImg from "@/assets/dashboard.jpg";
 import liveStudioImg from "@/assets/live-studio.jpg";
 import securityImg from "@/assets/security.jpg";
 import aiLayerImg from "@/assets/ai-layer.jpg";
+import showcasePlatform from "@/assets/showcase-platform.jpg";
+import showcaseApi from "@/assets/showcase-api.jpg";
+import showcaseMobile from "@/assets/showcase-mobile.jpg";
+import gradientMesh from "@/assets/gradient-mesh.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,10 +31,12 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-display selection:bg-accent/30">
+    <div className="min-h-screen bg-background text-foreground font-display selection:bg-accent/30 overflow-x-hidden">
       <Nav />
       <Hero />
+      <TrustStrip />
       <Ownership />
+      <Showcase />
       <DashboardShowcase />
       <Comparison />
       <Ecosystem />
@@ -49,14 +55,18 @@ function Nav() {
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
-          <div className="size-6 bg-accent rounded-sm rotate-45" />
+          <div
+            className="size-6 rounded-sm rotate-45"
+            style={{ background: "var(--gradient-spectrum)" }}
+          />
           <span className="font-extrabold tracking-tighter text-lg">BITDECENTRO</span>
         </a>
         <div className="hidden md:flex gap-8 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+          <a href="#showcase" className="hover:text-accent transition-colors">Showcase</a>
           <a href="#ecosystem" className="hover:text-accent transition-colors">Ecosystem</a>
-          <a href="#security" className="hover:text-accent transition-colors">Security</a>
-          <a href="#ai" className="hover:text-accent transition-colors">AI Layer</a>
-          <a href="#partnership" className="hover:text-accent transition-colors">Partnership</a>
+          <a href="#security" className="hover:text-cyan transition-colors">Security</a>
+          <a href="#ai" className="hover:text-magenta transition-colors">AI Layer</a>
+          <a href="#partnership" className="hover:text-emerald transition-colors">Partnership</a>
         </div>
         <a
           href="#partnership"
@@ -83,8 +93,13 @@ function Hero() {
       />
       <div
         aria-hidden
-        className="absolute -top-1/3 left-1/2 -translate-x-1/2 size-[800px] rounded-full opacity-[0.08] blur-3xl"
-        style={{ background: "radial-gradient(circle, var(--accent), transparent 70%)" }}
+        className="absolute -top-1/3 -left-40 size-[600px] rounded-full opacity-[0.18] blur-3xl"
+        style={{ background: "radial-gradient(circle, var(--magenta), transparent 70%)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute top-1/4 -right-40 size-[600px] rounded-full opacity-[0.18] blur-3xl"
+        style={{ background: "radial-gradient(circle, var(--cyan), transparent 70%)" }}
       />
       <div className="max-w-7xl mx-auto relative grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
         <div className="animate-entrance">
@@ -99,14 +114,21 @@ function Hero() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance leading-[0.92] mb-8">
-            Bitdecentro — Your Technology Partner{" "}
+            Bitdecentro —{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: "var(--gradient-spectrum)" }}
+            >
+              Your Technology Partner
+            </span>{" "}
             <span className="text-muted-foreground">for Your Own Brand</span>
           </h1>
 
-          <p className="text-lg md:text-2xl text-muted-foreground text-pretty max-w-2xl mb-4 font-mono">
-            <span className="text-accent">Build.</span> <span className="text-accent">Own.</span>{" "}
-            <span className="text-accent">Scale.</span>{" "}
-            <span className="text-accent">Monetize.</span>
+          <p className="text-lg md:text-2xl text-pretty max-w-2xl mb-4 font-mono">
+            <span className="text-accent">Build.</span>{" "}
+            <span className="text-cyan">Own.</span>{" "}
+            <span className="text-emerald">Scale.</span>{" "}
+            <span className="text-magenta">Monetize.</span>
           </p>
           <p className="text-base md:text-lg text-muted-foreground text-pretty max-w-2xl mb-12">
             We engineer the vault; you hold the keys. Sovereign casino infrastructure for global
@@ -121,16 +143,17 @@ function Hero() {
               Become a Technology Partner
             </a>
             <a
-              href="#ecosystem"
+              href="#showcase"
               className="px-7 py-4 border border-border-strong font-bold rounded-sm text-xs uppercase tracking-widest hover:bg-surface transition-colors"
             >
-              Schedule a Demo
+              View Showcase
             </a>
           </div>
         </div>
 
         <div className="relative animate-entrance [animation-delay:200ms] hidden lg:block">
-          <div className="absolute -inset-8 bg-accent/10 blur-3xl rounded-full" />
+          <div className="absolute -inset-8 blur-3xl rounded-full opacity-60"
+            style={{ background: "var(--gradient-spectrum)" }} />
           <div className="relative border border-border-strong bg-surface overflow-hidden rounded-sm">
             <img
               src={heroVault}
@@ -150,23 +173,43 @@ function Hero() {
 
       <div className="absolute bottom-0 inset-x-0 bg-accent-soft border-t border-border py-4 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap gap-x-10 gap-y-2 font-mono text-[11px]">
-          <Metric label="Uptime" value="99.999%" />
-          <Metric label="TPS" value="24,500/s" />
-          <Metric label="Volume" value="$1.2B YTD" />
-          <Metric label="Sec_Audit" value="Passed_2025" />
-          <Metric label="Latency" value="<12ms" />
+          <Metric label="Uptime" value="99.999%" color="text-emerald" />
+          <Metric label="TPS" value="24,500/s" color="text-cyan" />
+          <Metric label="Volume" value="$1.2B YTD" color="text-accent" />
+          <Metric label="Sec_Audit" value="Passed_2025" color="text-magenta" />
+          <Metric label="Latency" value="<12ms" color="text-emerald" />
         </div>
       </div>
     </section>
   );
 }
 
-function Metric({ label, value }: { label: string; value: string }) {
+function Metric({ label, value, color = "text-accent" }: { label: string; value: string; color?: string }) {
   return (
     <div className="flex items-center gap-3 whitespace-nowrap">
       <span className="text-muted-foreground">{label}</span>
-      <span className="text-accent">{value}</span>
+      <span className={color}>{value}</span>
     </div>
+  );
+}
+
+function TrustStrip() {
+  const logos = ["NEXUS GAMING", "ORION BET", "MERIDIAN CASINO", "AURUM PLAY", "SOLARIS LIVE", "VELOCITY 24"];
+  return (
+    <section className="border-b border-border bg-surface py-8 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center text-[10px] font-mono uppercase tracking-[0.4em] text-muted-foreground mb-6">
+          Powering Operators Across 14 Jurisdictions
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-70">
+          {logos.map((l) => (
+            <span key={l} className="text-sm font-bold tracking-[0.25em] text-muted-foreground hover:text-foreground transition-colors">
+              {l}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -176,16 +219,19 @@ function Ownership() {
       icon: "🏷️",
       title: "Your Brand Identity",
       desc: "Custom casino design, logo, UI, and player experience built to your exact specifications. Every pixel is yours.",
+      color: "magenta",
     },
     {
       icon: "🗄️",
       title: "Your Player Database",
       desc: "Complete ownership of users, analytics, and customer relationships. No shared data pools, no third-party access.",
+      color: "cyan",
     },
     {
       icon: "🔌",
       title: "Your Technology Stack",
       desc: "Scalable infrastructure that can evolve into APIs and white-label products — under your control, on your roadmap.",
+      color: "emerald",
     },
   ];
 
@@ -198,7 +244,12 @@ function Ownership() {
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
             Own the Brand. Own the Players.{" "}
-            <span className="text-accent">Own the Technology.</span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: "var(--gradient-spectrum)" }}
+            >
+              Own the Technology.
+            </span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Bitdecentro helps casino operators build a fully owned gaming ecosystem — not just
@@ -210,15 +261,176 @@ function Ownership() {
           {pillars.map((p, idx) => (
             <div
               key={p.title}
-              className="group relative p-8 border border-border bg-background hover:border-accent/40 transition-colors"
+              className="group relative p-8 border border-border bg-background hover:border-transparent transition-all overflow-hidden"
             >
-              <div className="text-3xl mb-6 transition-transform duration-500 group-hover:scale-110">
+              <div
+                className="absolute inset-x-0 top-0 h-1"
+                style={{ background: `var(--${p.color})` }}
+              />
+              <div
+                className="absolute -bottom-20 -right-20 size-48 rounded-full opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-500"
+                style={{ background: `var(--${p.color})` }}
+              />
+              <div className="text-3xl mb-6 transition-transform duration-500 group-hover:scale-110 relative">
                 {p.icon}
               </div>
-              <h3 className="text-base font-bold mb-3 uppercase tracking-wider">{p.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
-              <div className="absolute top-4 right-4 text-[10px] font-mono text-muted-foreground/40">
+              <h3 className="text-base font-bold mb-3 uppercase tracking-wider relative">{p.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed relative">{p.desc}</p>
+              <div
+                className="absolute top-4 right-4 text-[10px] font-mono opacity-60"
+                style={{ color: `var(--${p.color})` }}
+              >
                 /0{idx + 1}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Showcase() {
+  const items = [
+    {
+      n: "01",
+      title: "Branded Casino Platform",
+      url: "your-brand.casino",
+      desc: "Full-stack player-facing platform: lobby, slots, live tables, wallet, KYC, bonuses, loyalty engine — shipped under your brand from day one.",
+      tech: ["Next.js", "PostgreSQL", "Redis", "Stripe", "Cloudflare"],
+      image: showcasePlatform,
+      accent: "cyan",
+      reverse: false,
+    },
+    {
+      n: "02",
+      title: "API & White-Label Layer",
+      url: "api.your-brand.io",
+      desc: "Productize your platform. License your aggregator API, onboard sub-operators, and monetize your infrastructure as a SaaS revenue stream.",
+      tech: ["GraphQL", "REST", "Webhooks", "OAuth 2.0", "Swagger"],
+      image: showcaseApi,
+      accent: "emerald",
+      reverse: true,
+    },
+    {
+      n: "03",
+      title: "Native Mobile Casino App",
+      url: "iOS · Android",
+      desc: "Pixel-perfect native apps with biometric login, push retention loops, real-time wallet sync and store-approved compliance flows.",
+      tech: ["Swift", "Kotlin", "React Native", "Firebase", "OneSignal"],
+      image: showcaseMobile,
+      accent: "magenta",
+      reverse: false,
+    },
+  ];
+  return (
+    <section id="showcase" className="py-28 px-6 border-t border-border relative overflow-hidden">
+      <img
+        src={gradientMesh}
+        aria-hidden
+        loading="lazy"
+        alt=""
+        width={1600}
+        height={900}
+        className="absolute -top-40 inset-x-0 w-full h-[500px] object-cover opacity-[0.08] pointer-events-none"
+      />
+      <div className="relative max-w-7xl mx-auto">
+        <div className="mb-20 max-w-3xl">
+          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+            style={{ color: "var(--cyan)" }}>
+            02 · Selected Work
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
+            Platforms we've{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: "var(--gradient-spectrum)" }}
+            >
+              built, shipped, and scaled.
+            </span>
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Reference deployments from the Bitdecentro engineering studio — each one owned outright
+            by the operator behind it.
+          </p>
+        </div>
+
+        <div className="space-y-24">
+          {items.map((p) => (
+            <div
+              key={p.title}
+              className={`grid lg:grid-cols-2 gap-12 items-center ${p.reverse ? "lg:[&>*:first-child]:order-2" : ""}`}
+            >
+              <div className="relative group">
+                <div
+                  className="absolute -inset-4 blur-2xl rounded-3xl opacity-40 group-hover:opacity-70 transition-opacity"
+                  style={{ background: `var(--${p.accent})` }}
+                />
+                <div className="relative border border-border-strong rounded-sm overflow-hidden bg-surface">
+                  <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-surface-elevated">
+                    <div className="size-2.5 rounded-full bg-destructive/70" />
+                    <div className="size-2.5 rounded-full" style={{ background: "var(--amber)" }} />
+                    <div className="size-2.5 rounded-full" style={{ background: "var(--emerald)" }} />
+                    <div className="ml-auto text-[10px] font-mono text-muted-foreground tracking-widest">
+                      {p.url}
+                    </div>
+                  </div>
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    width={1280}
+                    height={832}
+                    className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-5">
+                  <div
+                    className="size-10 grid place-items-center font-mono font-bold text-xs rounded-sm"
+                    style={{
+                      background: `color-mix(in oklab, var(--${p.accent}) 15%, transparent)`,
+                      color: `var(--${p.accent})`,
+                    }}
+                  >
+                    {p.n}
+                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {p.url}
+                  </span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-5 leading-[1.1]">
+                  {p.title}
+                </h3>
+                <p className="text-muted-foreground text-base leading-relaxed mb-8">{p.desc}</p>
+                <div className="mb-8">
+                  <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground mb-3">
+                    Tech Stack
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {p.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1.5 text-[11px] font-mono rounded-full border"
+                        style={{
+                          borderColor: `color-mix(in oklab, var(--${p.accent}) 40%, transparent)`,
+                          color: `var(--${p.accent})`,
+                          background: `color-mix(in oklab, var(--${p.accent}) 8%, transparent)`,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <a
+                  href="#partnership"
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:gap-3 transition-all"
+                  style={{ color: `var(--${p.accent})` }}
+                >
+                  Discuss a similar build <span>→</span>
+                </a>
               </div>
             </div>
           ))}
@@ -242,8 +454,9 @@ function Comparison() {
     <section className="py-28 px-6 border-t border-border">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
-            02 · Audit Log
+          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+            style={{ color: "var(--emerald)" }}>
+            03 · Audit Log
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
             Why Operators Choose This Model
@@ -260,7 +473,7 @@ function Comparison() {
                 <th className="p-5 font-bold text-muted-foreground uppercase tracking-widest">
                   Traditional Platform
                 </th>
-                <th className="p-5 font-bold text-accent uppercase tracking-widest">
+                <th className="p-5 font-bold uppercase tracking-widest" style={{ color: "var(--emerald)" }}>
                   Bitdecentro
                 </th>
               </tr>
@@ -272,7 +485,7 @@ function Comparison() {
                   <td className="p-5 text-muted-foreground line-through decoration-destructive/40">
                     {traditional}
                   </td>
-                  <td className="p-5 text-accent">{ours}</td>
+                  <td className="p-5" style={{ color: "var(--emerald)" }}>{ours}</td>
                 </tr>
               ))}
             </tbody>
@@ -289,24 +502,28 @@ function Ecosystem() {
       n: "01",
       icon: "🎮",
       title: "Gaming Platform",
+      color: "cyan",
       items: ["Casino lobby & game management", "Wallet & payment systems", "Bonuses, loyalty & CRM", "Multi-device experience"],
     },
     {
       n: "02",
       icon: "🎥",
       title: "Live Casino Infrastructure",
+      color: "magenta",
       items: ["OBS / VMIX streaming setup", "Custom table & studio design", "Live dealer integration", "Broadcast-quality production"],
     },
     {
       n: "03",
       icon: "🔌",
       title: "API & White-Label Layer",
+      color: "emerald",
       items: ["Future API licensing opportunities", "Third-party integrations", "White-label expansion model", "Scalable partner onboarding"],
     },
     {
       n: "04",
       icon: "🤖",
       title: "AI & Intelligence Layer",
+      color: "accent",
       items: ["Fraud detection & risk scoring", "Player behavior analytics", "Retention & VIP prediction", "AI support & automation"],
     },
   ];
@@ -314,8 +531,9 @@ function Ecosystem() {
     <section id="ecosystem" className="py-28 px-6 bg-surface">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
-          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
-            03 · Ecosystem
+          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+            style={{ color: "var(--magenta)" }}>
+            05 · Ecosystem
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
             Complete Casino Technology Ecosystem
@@ -326,24 +544,41 @@ function Ecosystem() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {blocks.map((b) => (
-            <div key={b.title} className="bg-background p-8 group hover:bg-surface-elevated transition-colors">
-              <div className="flex items-center justify-between mb-8">
-                <div className="size-9 bg-accent-soft text-accent grid place-items-center font-mono font-bold text-xs">
+            <div
+              key={b.title}
+              className="relative bg-background p-8 group transition-all overflow-hidden border border-border hover:-translate-y-1 hover:border-transparent"
+            >
+              <div
+                className="absolute inset-x-0 top-0 h-[3px]"
+                style={{ background: `var(--${b.color})` }}
+              />
+              <div
+                className="absolute -bottom-24 -right-24 size-56 rounded-full opacity-0 group-hover:opacity-25 blur-3xl transition-opacity duration-500"
+                style={{ background: `var(--${b.color})` }}
+              />
+              <div className="relative flex items-center justify-between mb-8">
+                <div
+                  className="size-10 grid place-items-center font-mono font-bold text-xs rounded-sm"
+                  style={{
+                    background: `color-mix(in oklab, var(--${b.color}) 15%, transparent)`,
+                    color: `var(--${b.color})`,
+                  }}
+                >
                   {b.n}
                 </div>
-                <div className="text-2xl opacity-70 group-hover:opacity-100 transition-opacity">
+                <div className="text-3xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">
                   {b.icon}
                 </div>
               </div>
-              <h3 className="text-base font-bold mb-5 uppercase tracking-tight leading-tight">
+              <h3 className="relative text-base font-bold mb-5 uppercase tracking-tight leading-tight">
                 {b.title}
               </h3>
-              <ul className="space-y-2.5 text-xs text-muted-foreground">
+              <ul className="relative space-y-2.5 text-xs text-muted-foreground">
                 {b.items.map((i) => (
                   <li key={i} className="flex gap-2">
-                    <span className="text-accent">→</span>
+                    <span style={{ color: `var(--${b.color})` }}>→</span>
                     <span>{i}</span>
                   </li>
                 ))}
@@ -361,12 +596,13 @@ function Security() {
     <section id="security" className="py-28 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
-          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
-            04 · Security & Fraud Protection
+          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+            style={{ color: "var(--cyan)" }}>
+            06 · Security & Fraud Protection
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
             Enterprise-grade defense for{" "}
-            <span className="text-accent">operator-grade stakes.</span>
+            <span style={{ color: "var(--cyan)" }}>operator-grade stakes.</span>
           </h2>
         </div>
 
@@ -382,7 +618,8 @@ function Security() {
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-surface via-surface/40 to-transparent" />
             <div className="relative p-10 h-full flex flex-col justify-end">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">
+              <div className="font-mono text-[10px] uppercase tracking-widest mb-3"
+                style={{ color: "var(--cyan)" }}>
                 Defense Layer · Active
               </div>
               <div className="text-3xl font-extrabold tracking-tight">
@@ -397,7 +634,7 @@ function Security() {
               <ul className="space-y-3 text-sm text-muted-foreground">
                 {["Device fingerprinting", "Bot detection", "IP intelligence", "Velocity monitoring", "Suspicious activity alerts"].map((i) => (
                   <li key={i} className="flex gap-3 items-baseline">
-                    <span className="text-accent text-xs">▣</span>
+                    <span className="text-xs" style={{ color: "var(--cyan)" }}>▣</span>
                     <span>{i}</span>
                   </li>
                 ))}
@@ -409,7 +646,7 @@ function Security() {
               <ul className="space-y-3 text-sm text-muted-foreground">
                 {["Reduce fraud losses", "Protect player funds", "Maintain platform integrity", "Strengthen compliance readiness", "Improve operational visibility"].map((i) => (
                   <li key={i} className="flex gap-3 items-baseline">
-                    <span className="text-accent text-xs">▣</span>
+                    <span className="text-xs" style={{ color: "var(--cyan)" }}>▣</span>
                     <span>{i}</span>
                   </li>
                 ))}
@@ -424,10 +661,10 @@ function Security() {
 
 function AIFeatures() {
   const items = [
-    { icon: "🕵️", title: "AI Fraud Detection", desc: "Predict and flag suspicious behavior before losses occur." },
-    { icon: "📈", title: "Player Behavior Analytics", desc: "Understand engagement, retention, and lifetime value trends." },
-    { icon: "🎯", title: "VIP & Churn Prediction", desc: "Identify high-value players and at-risk users automatically." },
-    { icon: "💬", title: "AI Support & Personalization", desc: "Automated support, recommendations, and smart bonus delivery." },
+    { icon: "🕵️", title: "AI Fraud Detection", desc: "Predict and flag suspicious behavior before losses occur.", color: "magenta" },
+    { icon: "📈", title: "Player Behavior Analytics", desc: "Understand engagement, retention, and lifetime value trends.", color: "cyan" },
+    { icon: "🎯", title: "VIP & Churn Prediction", desc: "Identify high-value players and at-risk users automatically.", color: "emerald" },
+    { icon: "💬", title: "AI Support & Personalization", desc: "Automated support, recommendations, and smart bonus delivery.", color: "accent" },
   ];
   return (
     <section id="ai" className="relative py-28 px-6 bg-surface overflow-hidden">
@@ -443,11 +680,18 @@ function AIFeatures() {
       <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/60 to-surface" />
       <div className="relative max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
-          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
-            05 · Future-Ready with AI
+          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+            style={{ color: "var(--magenta)" }}>
+            07 · Future-Ready with AI
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            AI Features That <span className="text-accent">Increase Profitability</span>
+            AI Features That{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: "var(--gradient-spectrum)" }}
+            >
+              Increase Profitability
+            </span>
           </h2>
         </div>
 
@@ -455,8 +699,12 @@ function AIFeatures() {
           {items.map((i) => (
             <div
               key={i.title}
-              className="p-7 bg-background/80 backdrop-blur-sm border border-border hover:border-accent/40 transition-colors group"
+              className="relative p-7 bg-background/80 backdrop-blur-sm border border-border hover:-translate-y-1 transition-all group overflow-hidden"
             >
+              <div
+                className="absolute inset-x-0 top-0 h-[3px]"
+                style={{ background: `var(--${i.color})` }}
+              />
               <div className="text-3xl mb-5 group-hover:scale-110 transition-transform duration-500">
                 {i.icon}
               </div>
@@ -476,12 +724,13 @@ function DashboardShowcase() {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
           <div>
-            <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
-              Console · Operator View
+            <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+              style={{ color: "var(--emerald)" }}>
+              04 · Console · Operator View
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
               Every metric. <br />
-              <span className="text-accent">Every player. Every dollar.</span>
+              <span style={{ color: "var(--emerald)" }}>Every player. Every dollar.</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
               A single source of truth across your entire operation — revenue, retention, risk, and
@@ -489,19 +738,20 @@ function DashboardShowcase() {
               runs its book.
             </p>
             <div className="grid grid-cols-2 gap-6 font-mono">
-              <Stat label="GGR Lift" value="+34%" />
-              <Stat label="VIP Retention" value="92%" />
-              <Stat label="Fraud Caught" value="99.4%" />
-              <Stat label="Time-to-Insight" value="<1s" />
+              <Stat label="GGR Lift" value="+34%" color="emerald" />
+              <Stat label="VIP Retention" value="92%" color="cyan" />
+              <Stat label="Fraud Caught" value="99.4%" color="magenta" />
+              <Stat label="Time-to-Insight" value="<1s" color="accent" />
             </div>
           </div>
           <div className="relative">
-            <div className="absolute -inset-6 bg-accent/10 blur-3xl rounded-full" />
+            <div className="absolute -inset-6 blur-3xl rounded-full opacity-50"
+              style={{ background: "var(--gradient-spectrum)" }} />
             <div className="relative border border-border-strong rounded-sm overflow-hidden shadow-glow">
               <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-surface">
                 <div className="size-2.5 rounded-full bg-destructive/70" />
-                <div className="size-2.5 rounded-full bg-accent/70" />
-                <div className="size-2.5 rounded-full bg-accent" />
+                <div className="size-2.5 rounded-full" style={{ background: "var(--amber)" }} />
+                <div className="size-2.5 rounded-full" style={{ background: "var(--emerald)" }} />
                 <div className="ml-auto text-[10px] font-mono text-muted-foreground tracking-widest">
                   console.bitdecentro.io
                 </div>
@@ -522,13 +772,13 @@ function DashboardShowcase() {
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, value, color = "accent" }: { label: string; value: string; color?: string }) {
   return (
-    <div className="border-l-2 border-accent pl-4">
+    <div className="border-l-2 pl-4" style={{ borderColor: `var(--${color})` }}>
       <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">
         {label}
       </div>
-      <div className="text-2xl font-bold text-foreground">{value}</div>
+      <div className="text-2xl font-bold" style={{ color: `var(--${color})` }}>{value}</div>
     </div>
   );
 }
@@ -544,15 +794,16 @@ function LiveStudio() {
         height={1000}
         className="absolute inset-0 w-full h-full object-cover opacity-40"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/20" />
       <div className="relative max-w-7xl mx-auto">
         <div className="max-w-xl">
-          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
+          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+            style={{ color: "var(--magenta)" }}>
             On-Air · Broadcast-Grade
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
             Your studio. <br />
-            <span className="text-accent">Your show. Your house edge.</span>
+            <span style={{ color: "var(--magenta)" }}>Your show. Your house edge.</span>
           </h2>
           <p className="text-muted-foreground text-lg mb-8">
             Bitdecentro engineers the entire live-casino stack — OBS / VMIX pipelines, custom
@@ -561,13 +812,13 @@ function LiveStudio() {
           </p>
           <div className="flex flex-wrap gap-6 font-mono text-xs">
             <span className="text-muted-foreground">
-              <span className="text-accent">4K</span> Multi-cam
+              <span style={{ color: "var(--cyan)" }}>4K</span> Multi-cam
             </span>
             <span className="text-muted-foreground">
-              <span className="text-accent">&lt;180ms</span> Latency
+              <span style={{ color: "var(--emerald)" }}>&lt;180ms</span> Latency
             </span>
             <span className="text-muted-foreground">
-              <span className="text-accent">24/7</span> Operation
+              <span style={{ color: "var(--magenta)" }}>24/7</span> Operation
             </span>
           </div>
         </div>
@@ -581,12 +832,18 @@ function Partnership() {
     <section id="partnership" className="py-28 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-4">
-            06 · Partnership Model
+          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+            style={{ color: "var(--emerald)" }}>
+            08 · Partnership Model
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-4">
             Capital-efficient infrastructure for{" "}
-            <span className="text-accent">sovereign operators.</span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: "var(--gradient-spectrum)" }}
+            >
+              sovereign operators.
+            </span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl">
             A three-stage partnership ladder designed for long-term alignment between technology
@@ -601,6 +858,7 @@ function Partnership() {
             price="From $50,000"
             desc="Platform foundation, infrastructure setup, wallet system, core casino modules, initial integrations, security framework, and deployment."
             cta="Initiate Setup"
+            color="cyan"
           />
           <PricingCard
             phase="Phase 02 · Operations"
@@ -608,6 +866,7 @@ function Partnership() {
             price="$10,000 / month"
             desc="Dedicated development team, new features, enhancements, optimization, QA, security improvements, AI development, and ongoing support."
             cta="Start Partnership"
+            color="accent"
             featured
           />
           <PricingCard
@@ -616,6 +875,7 @@ function Partnership() {
             price="10% Profit Sharing"
             desc="Long-term partnership model where technology and business growth stay perfectly aligned. Equity-grade incentive structure."
             cta="Discuss Strategy"
+            color="emerald"
           />
         </div>
       </div>
@@ -629,6 +889,7 @@ function PricingCard({
   price,
   desc,
   cta,
+  color,
   featured,
 }: {
   phase: string;
@@ -636,32 +897,49 @@ function PricingCard({
   price: string;
   desc: string;
   cta: string;
+  color: string;
   featured?: boolean;
 }) {
   return (
     <div
-      className={`relative p-10 flex flex-col bg-surface ${
-        featured ? "border-2 border-accent shadow-glow" : "border border-border"
+      className={`relative p-10 flex flex-col bg-surface overflow-hidden ${
+        featured ? "border-2 shadow-glow lg:-translate-y-2" : "border border-border"
       }`}
+      style={featured ? { borderColor: `var(--${color})` } : undefined}
     >
+      <div
+        className="absolute inset-x-0 top-0 h-1"
+        style={{ background: `var(--${color})` }}
+      />
+      <div
+        className="absolute -bottom-32 -right-32 size-64 rounded-full opacity-20 blur-3xl"
+        style={{ background: `var(--${color})` }}
+      />
       {featured && (
-        <div className="absolute top-0 right-0 bg-accent text-accent-foreground text-[10px] font-bold px-3 py-1 uppercase tracking-tighter">
+        <div
+          className="absolute top-0 right-0 text-accent-foreground text-[10px] font-bold px-3 py-1 uppercase tracking-tighter"
+          style={{ background: `var(--${color})` }}
+        >
           Recommended
         </div>
       )}
-      <span className="text-[10px] font-mono text-accent uppercase tracking-widest mb-6">
+      <span
+        className="relative text-[10px] font-mono uppercase tracking-widest mb-6"
+        style={{ color: `var(--${color})` }}
+      >
         {phase}
       </span>
-      <h3 className="text-2xl md:text-3xl font-extrabold mb-2 tracking-tight">{title}</h3>
-      <div className="text-base text-accent font-mono mb-8">{price}</div>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-10">{desc}</p>
-      <div className="mt-auto pt-8 border-t border-border">
+      <h3 className="relative text-2xl md:text-3xl font-extrabold mb-2 tracking-tight">{title}</h3>
+      <div className="relative text-base font-mono mb-8" style={{ color: `var(--${color})` }}>{price}</div>
+      <p className="relative text-sm text-muted-foreground leading-relaxed mb-10">{desc}</p>
+      <div className="relative mt-auto pt-8 border-t border-border">
         <button
-          className={`w-full py-3 text-[10px] font-bold uppercase tracking-widest transition-colors ${
+          className="w-full py-3 text-[10px] font-bold uppercase tracking-widest transition-all hover:opacity-90"
+          style={
             featured
-              ? "bg-accent text-accent-foreground hover:opacity-90"
-              : "border border-border-strong hover:bg-surface-elevated"
-          }`}
+              ? { background: `var(--${color})`, color: "var(--accent-foreground)" }
+              : { border: `1px solid var(--${color})`, color: `var(--${color})` }
+          }
         >
           {cta}
         </button>
@@ -673,18 +951,29 @@ function PricingCard({
 function FinalCTA() {
   return (
     <section className="py-32 px-6 border-t border-border bg-surface relative overflow-hidden">
-      <div
+      <img
+        src={gradientMesh}
         aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full opacity-[0.06] blur-3xl"
-        style={{ background: "radial-gradient(circle, var(--accent), transparent 70%)" }}
+        loading="lazy"
+        alt=""
+        width={1600}
+        height={900}
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
       />
+      <div className="absolute inset-0 bg-gradient-to-b from-surface/80 via-surface/60 to-surface" />
       <div className="max-w-4xl mx-auto text-center relative">
-        <div className="text-[11px] font-mono font-bold text-accent uppercase tracking-[0.3em] mb-6">
-          07 · Positioning Statement
+        <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-6"
+          style={{ color: "var(--cyan)" }}>
+          09 · Positioning Statement
         </div>
         <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02] mb-8">
           Bitdecentro — Your Technology Partner{" "}
-          <span className="text-accent">for Your Own Brand.</span>
+          <span
+            className="bg-clip-text text-transparent"
+            style={{ backgroundImage: "var(--gradient-spectrum)" }}
+          >
+            for Your Own Brand.
+          </span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12">
           We don't just build casino software. We build technology assets that can evolve into
@@ -709,7 +998,10 @@ function Footer() {
     <footer className="px-6 py-12 border-t border-border">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2.5">
-          <div className="size-5 bg-accent rounded-sm rotate-45" />
+          <div
+            className="size-5 rounded-sm rotate-45"
+            style={{ background: "var(--gradient-spectrum)" }}
+          />
           <span className="text-[11px] font-bold uppercase tracking-[0.2em]">Bitdecentro</span>
         </div>
         <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest text-center">
