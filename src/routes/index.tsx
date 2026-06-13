@@ -1522,27 +1522,47 @@ function Partnership() {
 
         <div className="grid lg:grid-cols-3 gap-6">
           <PricingCard
-            phase="Phase 01 · Deployment"
-            title="One-Time Setup"
-            price="From $50,000"
-            desc="Platform foundation, infrastructure setup, wallet system, core casino modules, initial integrations, security framework, and deployment."
+            phase="Phase 01 · Starter"
+            title="Launch Package"
+            price="$50,000 setup"
+            desc="Everything you need to launch a fully operational casino platform."
+            features={[
+              "One-time setup cost — $50,000",
+              "6 Casino Games included",
+              "$2,000 / month tech maintenance",
+              "20% profit sharing",
+            ]}
             cta="Initiate Setup"
             color="cyan"
           />
           <PricingCard
-            phase="Phase 02 · Operations"
-            title="Monthly Technology Partnership"
-            price="$10,000 / month"
-            desc="Dedicated development team, new features, enhancements, optimization, QA, security improvements, AI development, and ongoing support."
+            phase="Phase 02 · Growth"
+            title="Scale Package"
+            price="$100,000 setup"
+            desc="Expanded game library and lower revenue share for high-growth operators."
+            features={[
+              "One-time setup cost — $100,000",
+              "12 Casino Games included",
+              "$3,000 / month tech maintenance",
+              "10% profit sharing",
+            ]}
             cta="Start Partnership"
             color="accent"
             featured
           />
           <PricingCard
-            phase="Phase 03 · Alignment"
-            title="Strategic Alignment"
-            price="10% Profit Sharing"
-            desc="Long-term partnership model where technology and business growth stay perfectly aligned. Equity-grade incentive structure."
+            phase="Phase 03 · Enterprise"
+            title="Dedicated Partnership"
+            price="$10,000 / month"
+            desc="A full-stack technology and strategy team aligned to your business outcomes."
+            features={[
+              "$10,000 / month engagement",
+              "Dedicated tech team aligned",
+              "N number of game development",
+              "AI implementation",
+              "Complete game ecosystem business plan",
+              "20% profit sharing",
+            ]}
             cta="Discuss Strategy"
             color="emerald"
           />
@@ -1557,6 +1577,7 @@ function PricingCard({
   title,
   price,
   desc,
+  features,
   cta,
   color,
   featured,
@@ -1565,6 +1586,7 @@ function PricingCard({
   title: string;
   price: string;
   desc: string;
+  features?: string[];
   cta: string;
   color: string;
   featured?: boolean;
@@ -1599,8 +1621,21 @@ function PricingCard({
         {phase}
       </span>
       <h3 className="relative text-2xl md:text-3xl font-extrabold mb-2 tracking-tight">{title}</h3>
-      <div className="relative text-base font-mono mb-8" style={{ color: `var(--${color})` }}>{price}</div>
-      <p className="relative text-sm text-muted-foreground leading-relaxed mb-10">{desc}</p>
+      <div className="relative text-base font-mono mb-6" style={{ color: `var(--${color})` }}>{price}</div>
+      <p className="relative text-sm text-muted-foreground leading-relaxed mb-6">{desc}</p>
+      {features && features.length > 0 && (
+        <ul className="relative space-y-3 mb-8">
+          {features.map((f) => (
+            <li key={f} className="flex items-start gap-3 text-sm">
+              <span
+                className="mt-[7px] inline-block size-1.5 rounded-full shrink-0"
+                style={{ background: `var(--${color})` }}
+              />
+              <span className="text-foreground/90 leading-snug">{f}</span>
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="relative mt-auto pt-8 border-t border-border">
         <button
           className="w-full py-3 text-[10px] font-bold uppercase tracking-widest transition-all hover:opacity-90"
