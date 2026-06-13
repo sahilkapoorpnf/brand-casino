@@ -1284,7 +1284,7 @@ function LiveStudio() {
 
 function ClientShowcase() {
   const gallery = [
-    { src: clientPartners.url, label: "Leadership Sync", tag: "On-site · Tbilisi", span: "row-span-2" },
+    { src: clientPartners.url, label: "Leadership Sync", tag: "On-site · Europe", span: "row-span-2" },
     { src: clientStudio1.url, label: "Live Studio Floor", tag: "Studio 3 · Blackjack", span: "" },
     { src: clientRoulette.url, label: "Roulette QA", tag: "Hardware Calibration", span: "" },
     { src: clientTables.url, label: "Table Provisioning", tag: "18 Live Tables", span: "col-span-2" },
@@ -1298,14 +1298,14 @@ function ClientShowcase() {
   const reviews = [
     {
       name: "Giorgi T.",
-      role: "Director of Operations · NeoBet Live Studios",
+      role: "Director of Operations · Happy Customer (Confidential)",
       rating: 5,
       quote:
         "Bitdecentro shipped our live casino studio end-to-end — 18 tables, broadcast stack, RNG and player wallets. Migration was zero-downtime and GGR lifted 31% in the first quarter.",
     },
     {
       name: "Alexei V.",
-      role: "CTO · Tbilisi Gaming Group",
+      role: "CTO · Happy Customer · Europe",
       rating: 5,
       quote:
         "Their team is genuinely on the floor with us. Camera rigs, dealer UI, latency tuning — they own the full stack and treat the project like it's their own brand.",
@@ -1387,13 +1387,13 @@ function ClientShowcase() {
             className="w-16 h-16 rounded-xl flex items-center justify-center font-extrabold text-2xl text-background"
             style={{ background: "var(--gradient-spectrum)" }}
           >
-            NB
+            HC
           </div>
           <div>
             <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/50 mb-1">
               Featured Client
             </div>
-            <div className="text-xl font-bold">NeoBet Live Studios — Tbilisi, Georgia</div>
+            <div className="text-xl font-bold">Happy Customer 🔒 — Europe <span className="text-[10px] font-mono uppercase tracking-wider text-foreground/50 ml-2">NDA Protected</span></div>
             <div className="text-sm text-foreground/60 mt-1">
               Full live casino stack · 18 tables · RNG + Wallet + AI risk · On-prem broadcast
             </div>
