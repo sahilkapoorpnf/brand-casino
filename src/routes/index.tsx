@@ -1298,7 +1298,7 @@ function ClientShowcase() {
   const reviews = [
     {
       name: "Giorgi T.",
-      role: "Director of Operations · NeoBet Live Studios",
+      role: "Director of Operations · Happy Customer (Confidential)",
       rating: 5,
       quote:
         "Bitdecentro shipped our live casino studio end-to-end — 18 tables, broadcast stack, RNG and player wallets. Migration was zero-downtime and GGR lifted 31% in the first quarter.",
