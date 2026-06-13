@@ -44,7 +44,7 @@
   --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--accent) 40%, transparent);
   --shadow-cyan: 0 0 60px -10px color-mix(in oklab, var(--cyan) 50%, transparent);
   --shadow-magenta: 0 0 60px -10px color-mix(in oklab, var(--magenta) 50%, transparent);
-  --gradient-accent: linear-gradient(135deg, oklch(0.78 0.08 75), oklch(0.65 0.12 55));
+  --gradient-accent: linear-gradient(135deg, oklch(0.65 0.20 250), oklch(0.45 0.22 262));
   --gradient-spectrum: linear-gradient(120deg, var(--magenta), var(--accent), var(--cyan), var(--emerald));
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
