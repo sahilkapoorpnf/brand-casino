@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroRoulette from "@/assets/hero-roulette.jpg";
 import casinoFloor from "@/assets/casino-floor.jpg";
+import ecosystemBg from "@/assets/ecosystem-bg.jpg";
 import dashboardImg from "@/assets/dashboard.jpg";
 import liveStudioImg from "@/assets/live-studio.jpg";
 import securityImg from "@/assets/security.jpg";
@@ -715,63 +716,151 @@ function Ecosystem() {
     },
   ];
   return (
-    <section id="ecosystem" className="py-28 px-6 bg-surface">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16 max-w-3xl">
-          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
-            style={{ color: "var(--magenta)" }}>
-            05 · Ecosystem
+    <section id="ecosystem" className="relative py-32 px-6 overflow-hidden border-y border-border">
+      {/* Tech ecosystem background */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={ecosystemBg}
+          alt="Casino technology ecosystem network"
+          width={1920}
+          height={1080}
+          loading="lazy"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+        <div className="absolute inset-0 bg-background/55" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-end mb-16">
+          <div>
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="h-px w-10" style={{ background: "var(--magenta)" }} />
+              <span
+                className="text-[11px] font-mono font-bold uppercase tracking-[0.3em]"
+                style={{ color: "var(--magenta)" }}
+              >
+                05 · Ecosystem
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02]">
+              Complete Casino{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: "var(--gradient-spectrum)" }}
+              >
+                Technology Ecosystem
+              </span>
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-6">
-            Complete Casino Technology Ecosystem
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Bitdecentro provides the technology layer that powers your brand across web, mobile,
-            live casino, and future AI-driven services.
-          </p>
+          <div className="lg:pl-10 lg:border-l border-border-strong">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-5">
+              The technology layer that powers your brand across web, mobile,
+              live casino, and future AI-driven services — modular, sovereign, infinitely composable.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-widest">
+              <span className="text-cyan">● 4 Layers</span>
+              <span className="text-magenta">● 16 Modules</span>
+              <span className="text-emerald">● 1 Stack</span>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {blocks.map((b) => (
+        {/* Stack diagram */}
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border-strong/40 border border-border-strong rounded-sm overflow-hidden">
+          {blocks.map((b, i) => (
             <div
               key={b.title}
-              className="relative bg-background p-8 group transition-all overflow-hidden border border-border hover:-translate-y-1 hover:border-transparent"
+              className="group relative bg-background/80 backdrop-blur-xl p-8 transition-all overflow-hidden hover:bg-surface/90"
             >
+              {/* Layer index strip */}
               <div
-                className="absolute inset-x-0 top-0 h-[3px]"
+                className="absolute left-0 top-0 bottom-0 w-[3px] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500"
                 style={{ background: `var(--${b.color})` }}
               />
               <div
-                className="absolute -bottom-24 -right-24 size-56 rounded-full opacity-0 group-hover:opacity-25 blur-3xl transition-opacity duration-500"
+                className="absolute -bottom-32 -right-24 size-64 rounded-full opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-700"
                 style={{ background: `var(--${b.color})` }}
               />
-              <div className="relative flex items-center justify-between mb-8">
+
+              {/* Header row */}
+              <div className="relative flex items-start justify-between mb-8">
+                <div>
+                  <div
+                    className="text-[9px] font-mono uppercase tracking-[0.3em] mb-2"
+                    style={{ color: `var(--${b.color})` }}
+                  >
+                    Layer /{b.n}
+                  </div>
+                  <div className="text-5xl font-extrabold tracking-tighter opacity-80 leading-none">
+                    {b.n}
+                  </div>
+                </div>
                 <div
-                  className="size-10 grid place-items-center font-mono font-bold text-xs rounded-sm"
+                  className="size-14 grid place-items-center rounded-sm text-2xl border"
                   style={{
-                    background: `color-mix(in oklab, var(--${b.color}) 15%, transparent)`,
-                    color: `var(--${b.color})`,
+                    background: `color-mix(in oklab, var(--${b.color}) 10%, transparent)`,
+                    borderColor: `color-mix(in oklab, var(--${b.color}) 40%, transparent)`,
                   }}
                 >
-                  {b.n}
-                </div>
-                <div className="text-3xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">
                   {b.icon}
                 </div>
               </div>
-              <h3 className="relative text-base font-bold mb-5 uppercase tracking-tight leading-tight">
+
+              <h3 className="relative text-lg font-extrabold mb-5 tracking-tight leading-tight">
                 {b.title}
               </h3>
-              <ul className="relative space-y-2.5 text-xs text-muted-foreground">
-                {b.items.map((i) => (
-                  <li key={i} className="flex gap-2">
-                    <span style={{ color: `var(--${b.color})` }}>→</span>
-                    <span>{i}</span>
+
+              <ul className="relative space-y-3 text-xs text-muted-foreground mb-6">
+                {b.items.map((it) => (
+                  <li key={it} className="flex gap-3 items-start">
+                    <span
+                      className="size-1 rounded-full mt-1.5 flex-shrink-0"
+                      style={{ background: `var(--${b.color})` }}
+                    />
+                    <span>{it}</span>
                   </li>
                 ))}
               </ul>
+
+              {/* Status footer */}
+              <div className="relative pt-5 border-t border-border flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
+                <span className="text-muted-foreground">Status</span>
+                <span className="flex items-center gap-1.5" style={{ color: `var(--${b.color})` }}>
+                  <span
+                    className="size-1.5 rounded-full animate-pulse"
+                    style={{ background: `var(--${b.color})` }}
+                  />
+                  Operational
+                </span>
+              </div>
+
+              {/* Connector line between cards (desktop) */}
+              {i < blocks.length - 1 && (
+                <div
+                  aria-hidden
+                  className="hidden lg:block absolute top-1/2 -right-px w-3 h-px"
+                  style={{ background: `var(--${b.color})`, opacity: 0.4 }}
+                />
+              )}
             </div>
           ))}
+        </div>
+
+        {/* Foundation bar */}
+        <div className="mt-px bg-background/80 backdrop-blur-xl border border-t-0 border-border-strong rounded-b-sm p-5 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            <span className="size-2 rotate-45 bg-accent" />
+            Foundation · Bitdecentro Core Infrastructure
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+            <span>Kubernetes</span>
+            <span>Cloudflare</span>
+            <span>Vault</span>
+          </div>
         </div>
       </div>
     </section>
