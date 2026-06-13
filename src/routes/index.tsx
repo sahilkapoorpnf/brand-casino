@@ -257,10 +257,10 @@ function CasinoGames() {
           loading="lazy"
           width={1920}
           height={1080}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-background/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--background))_85%)]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
