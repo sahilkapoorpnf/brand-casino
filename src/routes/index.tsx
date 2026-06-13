@@ -1,4 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import heroVault from "@/assets/hero-vault.jpg";
+import dashboardImg from "@/assets/dashboard.jpg";
+import liveStudioImg from "@/assets/live-studio.jpg";
+import securityImg from "@/assets/security.jpg";
+import aiLayerImg from "@/assets/ai-layer.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
