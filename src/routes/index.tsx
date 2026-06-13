@@ -1530,6 +1530,7 @@ function Partnership() {
               "One-time setup cost — $50,000",
               "6 Casino Games included",
               "$2,000 / month tech maintenance",
+              "White label with your own branding",
               "20% profit sharing",
             ]}
             cta="Initiate Setup"
@@ -1544,6 +1545,7 @@ function Partnership() {
               "One-time setup cost — $100,000",
               "12 Casino Games included",
               "$3,000 / month tech maintenance",
+              "White label with your own branding",
               "10% profit sharing",
             ]}
             cta="Start Partnership"
@@ -1560,6 +1562,7 @@ function Partnership() {
               "Dedicated tech team aligned",
               "N number of game development",
               "AI implementation",
+              "White label with your own branding",
               "Complete game ecosystem business plan",
               "20% profit sharing",
             ]}
