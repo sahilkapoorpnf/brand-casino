@@ -84,8 +84,8 @@ function Hero() {
         className="absolute -top-1/3 left-1/2 -translate-x-1/2 size-[800px] rounded-full opacity-[0.08] blur-3xl"
         style={{ background: "radial-gradient(circle, var(--accent), transparent 70%)" }}
       />
-      <div className="max-w-7xl mx-auto relative">
-        <div className="max-w-[900px] animate-entrance">
+      <div className="max-w-7xl mx-auto relative grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+        <div className="animate-entrance">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/20 bg-accent-soft mb-8">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-75 animate-ping" />
@@ -96,7 +96,7 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-balance leading-[0.92] mb-8">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance leading-[0.92] mb-8">
             Bitdecentro — Your Technology Partner{" "}
             <span className="text-muted-foreground">for Your Own Brand</span>
           </h1>
@@ -124,6 +124,24 @@ function Hero() {
             >
               Schedule a Demo
             </a>
+          </div>
+        </div>
+
+        <div className="relative animate-entrance [animation-delay:200ms] hidden lg:block">
+          <div className="absolute -inset-8 bg-accent/10 blur-3xl rounded-full" />
+          <div className="relative border border-border-strong bg-surface overflow-hidden rounded-sm">
+            <img
+              src={heroVault}
+              alt="Bronze casino vault representing technology ownership"
+              width={1600}
+              height={1200}
+              className="w-full h-auto object-cover aspect-[4/5]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
+              <span className="text-muted-foreground">Asset_ID</span>
+              <span className="text-accent">BDC-VAULT-001</span>
+            </div>
           </div>
         </div>
       </div>
