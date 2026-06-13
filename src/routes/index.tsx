@@ -10,6 +10,15 @@ import showcasePlatform from "@/assets/showcase-platform.jpg";
 import showcaseApi from "@/assets/showcase-api.jpg";
 import showcaseMobile from "@/assets/showcase-mobile.jpg";
 import gradientMesh from "@/assets/gradient-mesh.jpg";
+import clientOps1 from "@/assets/clients/client-ops-1.jpg.asset.json";
+import clientTeam from "@/assets/clients/client-team.jpg.asset.json";
+import clientStudio1 from "@/assets/clients/client-studio-1.jpg.asset.json";
+import clientTables from "@/assets/clients/client-tables.jpg.asset.json";
+import clientPartners from "@/assets/clients/client-partners.jpg.asset.json";
+import clientMeeting from "@/assets/clients/client-meeting.jpg.asset.json";
+import clientRoulette from "@/assets/clients/client-roulette.jpg.asset.json";
+import clientCamera from "@/assets/clients/client-camera.jpg.asset.json";
+import clientWalkthrough from "@/assets/clients/client-walkthrough.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,6 +54,7 @@ function Landing() {
       <LiveStudio />
       <Security />
       <AIFeatures />
+      <ClientShowcase />
       <Partnership />
       <FinalCTA />
       <Footer />
@@ -1265,6 +1275,204 @@ function LiveStudio() {
               <span style={{ color: "var(--magenta)" }}>24/7</span> Operation
             </span>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+function ClientShowcase() {
+  const gallery = [
+    { src: clientPartners.url, label: "Leadership Sync", tag: "On-site · Tbilisi", span: "row-span-2" },
+    { src: clientStudio1.url, label: "Live Studio Floor", tag: "Studio 3 · Blackjack", span: "" },
+    { src: clientRoulette.url, label: "Roulette QA", tag: "Hardware Calibration", span: "" },
+    { src: clientTables.url, label: "Table Provisioning", tag: "18 Live Tables", span: "col-span-2" },
+    { src: clientCamera.url, label: "Camera Rig Tuning", tag: "Broadcast Setup", span: "" },
+    { src: clientWalkthrough.url, label: "Floor Walkthrough", tag: "Operations Review", span: "" },
+    { src: clientOps1.url, label: "NOC + Engineering", tag: "24/7 Monitoring", span: "" },
+    { src: clientTeam.url, label: "Delivery Team", tag: "On-prem Integration", span: "" },
+    { src: clientMeeting.url, label: "Strategy Session", tag: "Product Roadmap", span: "" },
+  ];
+
+  const reviews = [
+    {
+      name: "Giorgi T.",
+      role: "Director of Operations · NeoBet Live Studios",
+      rating: 5,
+      quote:
+        "Bitdecentro shipped our live casino studio end-to-end — 18 tables, broadcast stack, RNG and player wallets. Migration was zero-downtime and GGR lifted 31% in the first quarter.",
+    },
+    {
+      name: "Alexei V.",
+      role: "CTO · Tbilisi Gaming Group",
+      rating: 5,
+      quote:
+        "Their team is genuinely on the floor with us. Camera rigs, dealer UI, latency tuning — they own the full stack and treat the project like it's their own brand.",
+    },
+    {
+      name: "Marina K.",
+      role: "Head of Product · Strategic Partner",
+      rating: 5,
+      quote:
+        "Most vendors disappear after go-live. Bitdecentro stayed embedded — weekly product reviews, AI risk dashboards, real KPI accountability. Easiest renewal we've ever signed.",
+    },
+  ];
+
+  return (
+    <section id="clients" className="relative py-28 px-6 border-t border-border overflow-hidden">
+      {/* Ambient backdrop */}
+      <div className="absolute inset-0 -z-10">
+        <div
+          className="absolute -top-32 -left-20 w-[520px] h-[520px] rounded-full blur-3xl opacity-30"
+          style={{ background: "radial-gradient(circle, var(--emerald) 0%, transparent 70%)" }}
+        />
+        <div
+          className="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full blur-3xl opacity-20"
+          style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)" }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 mb-16 items-end">
+          <div>
+            <div
+              className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
+              style={{ color: "var(--emerald)" }}
+            >
+              08 · Field Proof · Live Deployment
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+              Built on the floor with{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: "var(--gradient-spectrum)" }}
+              >
+                trusted operators
+              </span>
+            </h2>
+          </div>
+          <div className="space-y-5">
+            <p className="text-lg text-foreground/70 leading-relaxed">
+              Real partners. Real studios. Real revenue. A behind-the-scenes look at one of our active
+              live casino deployments — engineering, dealer studios, and operations delivered hand-in-hand
+              with the operator's team.
+            </p>
+            <div className="flex flex-wrap gap-3 text-[11px] font-mono uppercase tracking-wider">
+              <span className="px-3 py-1.5 rounded-full border border-emerald/40 text-emerald bg-emerald/5">
+                ★★★★★ 4.9 / 5
+              </span>
+              <span className="px-3 py-1.5 rounded-full border border-border text-foreground/70">
+                18 Live Tables Shipped
+              </span>
+              <span className="px-3 py-1.5 rounded-full border border-border text-foreground/70">
+                Zero-downtime Migration
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Featured operator card */}
+        <div className="mb-12 rounded-2xl border border-border bg-surface/60 backdrop-blur-sm p-6 md:p-8 grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
+          <div
+            className="w-16 h-16 rounded-xl flex items-center justify-center font-extrabold text-2xl text-background"
+            style={{ background: "var(--gradient-spectrum)" }}
+          >
+            NB
+          </div>
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/50 mb-1">
+              Featured Client
+            </div>
+            <div className="text-xl font-bold">NeoBet Live Studios — Tbilisi, Georgia</div>
+            <div className="text-sm text-foreground/60 mt-1">
+              Full live casino stack · 18 tables · RNG + Wallet + AI risk · On-prem broadcast
+            </div>
+          </div>
+          <div className="flex gap-6 md:border-l md:border-border md:pl-6">
+            {[
+              { v: "+31%", l: "GGR Lift" },
+              { v: "18", l: "Live Tables" },
+              { v: "99.99%", l: "Uptime" },
+            ].map((s) => (
+              <div key={s.l} className="text-center">
+                <div className="text-2xl font-extrabold text-emerald">{s.v}</div>
+                <div className="text-[10px] font-mono uppercase tracking-wider text-foreground/50 mt-1">
+                  {s.l}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Image mosaic */}
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] gap-3 mb-16">
+          {gallery.map((g, i) => (
+            <figure
+              key={i}
+              className={`group relative overflow-hidden rounded-xl border border-border ${g.span}`}
+            >
+              <img
+                src={g.src}
+                alt={g.label}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+              <figcaption className="absolute bottom-0 left-0 right-0 p-3">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-emerald mb-0.5">
+                  {g.tag}
+                </div>
+                <div className="text-sm font-semibold text-foreground">{g.label}</div>
+              </figcaption>
+              <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-emerald animate-pulse" />
+            </figure>
+          ))}
+        </div>
+
+        {/* Reviews */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {reviews.map((r) => (
+            <div
+              key={r.name}
+              className="relative rounded-2xl border border-border bg-surface/60 backdrop-blur-sm p-6 hover:border-emerald/40 transition-colors"
+            >
+              <div className="absolute -top-3 left-6 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-background border border-emerald/40 text-emerald rounded">
+                Verified Client
+              </div>
+              <div className="flex gap-0.5 text-emerald text-lg mb-3">
+                {"★".repeat(r.rating)}
+                <span className="text-foreground/20">{"★".repeat(5 - r.rating)}</span>
+              </div>
+              <p className="text-sm text-foreground/80 leading-relaxed mb-5">"{r.quote}"</p>
+              <div className="pt-4 border-t border-border">
+                <div className="text-sm font-semibold">{r.name}</div>
+                <div className="text-[11px] font-mono uppercase tracking-wider text-foreground/50 mt-0.5">
+                  {r.role}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer bar */}
+        <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono uppercase tracking-wider text-foreground/60 border-t border-border pt-6">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-pulse" />
+            Live deployment · monitored from our NOC · 24/7
+          </div>
+          <a href="#partnership" className="text-emerald hover:underline">
+            Become our next case study →
+          </a>
         </div>
       </div>
     </section>
