@@ -1305,7 +1305,7 @@ function ClientShowcase() {
     },
     {
       name: "Alexei V.",
-      role: "CTO · Tbilisi Gaming Group",
+      role: "CTO · Happy Customer · Europe",
       rating: 5,
       quote:
         "Their team is genuinely on the floor with us. Camera rigs, dealer UI, latency tuning — they own the full stack and treat the project like it's their own brand.",
