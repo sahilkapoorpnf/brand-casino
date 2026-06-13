@@ -1284,7 +1284,7 @@ function LiveStudio() {
 
 function ClientShowcase() {
   const gallery = [
-    { src: clientPartners.url, label: "Leadership Sync", tag: "On-site · Tbilisi", span: "row-span-2" },
+    { src: clientPartners.url, label: "Leadership Sync", tag: "On-site · Europe", span: "row-span-2" },
     { src: clientStudio1.url, label: "Live Studio Floor", tag: "Studio 3 · Blackjack", span: "" },
     { src: clientRoulette.url, label: "Roulette QA", tag: "Hardware Calibration", span: "" },
     { src: clientTables.url, label: "Table Provisioning", tag: "18 Live Tables", span: "col-span-2" },
