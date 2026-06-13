@@ -61,7 +61,6 @@ function Landing() {
       <div className="relative z-10">
       <Nav />
       <Hero />
-      <CasinoGames />
       <TrustStrip />
       <Ownership />
       <Showcase />
