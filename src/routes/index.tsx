@@ -1648,7 +1648,6 @@ function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2.5">
           <img src={brandLogo.url} alt="Bitdecentro" className="h-6 w-auto" />
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em]">Bitdecentro</span>
         </div>
         <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest text-center">
           © 2025 Bitdecentro Technology Infrastructure · Operator-Grade · All Rights Reserved
