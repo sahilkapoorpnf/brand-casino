@@ -937,57 +937,225 @@ function Security() {
 
 function AIFeatures() {
   const items = [
-    { icon: "🕵️", title: "AI Fraud Detection", desc: "Predict and flag suspicious behavior before losses occur.", color: "magenta" },
-    { icon: "📈", title: "Player Behavior Analytics", desc: "Understand engagement, retention, and lifetime value trends.", color: "cyan" },
-    { icon: "🎯", title: "VIP & Churn Prediction", desc: "Identify high-value players and at-risk users automatically.", color: "emerald" },
-    { icon: "💬", title: "AI Support & Personalization", desc: "Automated support, recommendations, and smart bonus delivery.", color: "accent" },
+    {
+      n: "01",
+      icon: "🕵️",
+      title: "AI Fraud Detection",
+      desc: "Predict and flag suspicious behavior before losses occur.",
+      color: "magenta",
+      metric: "+$2.4M",
+      metricLabel: "Saved / month",
+      tags: ["ML Models", "Real-time"],
+    },
+    {
+      n: "02",
+      icon: "📈",
+      title: "Player Behavior Analytics",
+      desc: "Understand engagement, retention, and lifetime value trends.",
+      color: "cyan",
+      metric: "94%",
+      metricLabel: "Prediction Acc.",
+      tags: ["LTV Score", "Cohorts"],
+    },
+    {
+      n: "03",
+      icon: "🎯",
+      title: "VIP & Churn Prediction",
+      desc: "Identify high-value players and at-risk users automatically.",
+      color: "emerald",
+      metric: "+38%",
+      metricLabel: "VIP Retention",
+      tags: ["Auto-Tier", "Win-back"],
+    },
+    {
+      n: "04",
+      icon: "💬",
+      title: "AI Support & Personalization",
+      desc: "Automated support, recommendations, and smart bonus delivery.",
+      color: "accent",
+      metric: "8.2s",
+      metricLabel: "Avg Resolve",
+      tags: ["LLM Agent", "Smart Bonus"],
+    },
   ];
   return (
-    <section id="ai" className="relative py-28 px-6 bg-surface overflow-hidden">
+    <section id="ai" className="relative py-32 px-6 overflow-hidden border-y border-border bg-background">
+      {/* Layered AI background */}
       <img
         src={aiLayerImg}
         alt=""
         aria-hidden
         loading="lazy"
-        width={1400}
-        height={1000}
-        className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen"
+        width={1920}
+        height={1080}
+        className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-screen"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/60 to-surface" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+
+      {/* Ambient glows */}
+      <div
+        aria-hidden
+        className="absolute -top-40 left-1/4 size-[500px] rounded-full opacity-25 blur-3xl"
+        style={{ background: "radial-gradient(circle, var(--magenta), transparent 70%)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute -bottom-40 right-1/4 size-[500px] rounded-full opacity-25 blur-3xl"
+        style={{ background: "radial-gradient(circle, var(--cyan), transparent 70%)" }}
+      />
+
       <div className="relative max-w-7xl mx-auto">
-        <div className="mb-16 max-w-3xl">
-          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] mb-4"
-            style={{ color: "var(--magenta)" }}>
-            07 · Future-Ready with AI
+        {/* Header */}
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-end mb-16">
+          <div>
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="h-px w-10" style={{ background: "var(--magenta)" }} />
+              <span
+                className="text-[11px] font-mono font-bold uppercase tracking-[0.3em]"
+                style={{ color: "var(--magenta)" }}
+              >
+                07 · Intelligence Layer
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-magenta/30 text-[9px] font-mono uppercase tracking-widest text-magenta">
+                <span className="size-1.5 rounded-full bg-magenta animate-pulse" />
+                Live
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02]">
+              AI Features That{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: "var(--gradient-spectrum)" }}
+              >
+                Increase Profitability
+              </span>
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            AI Features That{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: "var(--gradient-spectrum)" }}
-            >
-              Increase Profitability
-            </span>
-          </h2>
+          <div className="lg:pl-10 lg:border-l border-border-strong">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-5">
+              Four models trained on billions of player events. Every interaction
+              becomes a signal — every signal becomes margin.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-widest">
+              <span className="text-emerald">↑ 34% GGR</span>
+              <span className="text-cyan">↓ 67% Churn</span>
+              <span className="text-magenta">↑ 12× ROAS</span>
+            </div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Feature cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {items.map((i) => (
-            <div
+            <article
               key={i.title}
-              className="relative p-7 bg-background/80 backdrop-blur-sm border border-border hover:-translate-y-1 transition-all group overflow-hidden"
+              className="group relative p-7 bg-background/70 backdrop-blur-xl border border-border rounded-sm overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-transparent"
+              style={{
+                boxShadow: "0 0 0 1px transparent",
+              }}
             >
+              {/* Gradient border on hover */}
               <div
-                className="absolute inset-x-0 top-0 h-[3px]"
+                aria-hidden
+                className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background: `linear-gradient(135deg, var(--${i.color}), transparent 60%)`,
+                  padding: "1px",
+                  WebkitMask:
+                    "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude",
+                }}
+              />
+              {/* Glow */}
+              <div
+                aria-hidden
+                className="absolute -bottom-32 -right-20 size-64 rounded-full opacity-0 group-hover:opacity-40 blur-3xl transition-opacity duration-700"
                 style={{ background: `var(--${i.color})` }}
               />
-              <div className="text-3xl mb-5 group-hover:scale-110 transition-transform duration-500">
-                {i.icon}
+
+              {/* Top row */}
+              <div className="relative flex items-start justify-between mb-8">
+                <div
+                  className="size-14 grid place-items-center text-2xl rounded-sm border"
+                  style={{
+                    background: `color-mix(in oklab, var(--${i.color}) 10%, transparent)`,
+                    borderColor: `color-mix(in oklab, var(--${i.color}) 35%, transparent)`,
+                  }}
+                >
+                  {i.icon}
+                </div>
+                <div
+                  className="text-[10px] font-mono uppercase tracking-[0.3em]"
+                  style={{ color: `var(--${i.color})` }}
+                >
+                  /{i.n}
+                </div>
               </div>
-              <h3 className="text-sm font-bold mb-3 uppercase tracking-wider">{i.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{i.desc}</p>
-            </div>
+
+              {/* Title + desc */}
+              <h3 className="relative text-lg font-extrabold mb-3 tracking-tight leading-tight">
+                {i.title}
+              </h3>
+              <p className="relative text-xs text-muted-foreground leading-relaxed mb-6">
+                {i.desc}
+              </p>
+
+              {/* Big metric */}
+              <div className="relative pt-5 border-t border-border mb-5">
+                <div
+                  className="text-3xl font-extrabold tracking-tight leading-none"
+                  style={{ color: `var(--${i.color})` }}
+                >
+                  {i.metric}
+                </div>
+                <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
+                  {i.metricLabel}
+                </div>
+              </div>
+
+              {/* Tag chips */}
+              <div className="relative flex flex-wrap gap-1.5">
+                {i.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="px-2 py-1 rounded-sm text-[9px] font-mono uppercase tracking-widest border"
+                    style={{
+                      borderColor: `color-mix(in oklab, var(--${i.color}) 30%, transparent)`,
+                      color: `var(--${i.color})`,
+                      background: `color-mix(in oklab, var(--${i.color}) 6%, transparent)`,
+                    }}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* Animated scan line */}
+              <div
+                aria-hidden
+                className="absolute inset-x-0 top-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ background: `linear-gradient(90deg, transparent, var(--${i.color}), transparent)` }}
+              />
+            </article>
           ))}
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 p-5 bg-background/60 backdrop-blur-xl border border-border-strong rounded-sm">
+          <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span
+              className="size-2 rounded-full animate-pulse"
+              style={{ background: "var(--magenta)" }}
+            />
+            Models retrained · every 6 hours · 2.1B events processed today
+          </div>
+          <a
+            href="#partnership"
+            className="text-[11px] font-bold font-mono uppercase tracking-widest text-magenta hover:opacity-80 transition-opacity"
+          >
+            Request AI Demo →
+          </a>
         </div>
       </div>
     </section>
