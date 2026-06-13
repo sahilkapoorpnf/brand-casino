@@ -10,6 +10,15 @@ import showcasePlatform from "@/assets/showcase-platform.jpg";
 import showcaseApi from "@/assets/showcase-api.jpg";
 import showcaseMobile from "@/assets/showcase-mobile.jpg";
 import gradientMesh from "@/assets/gradient-mesh.jpg";
+import clientOps1 from "@/assets/clients/client-ops-1.jpg.asset.json";
+import clientTeam from "@/assets/clients/client-team.jpg.asset.json";
+import clientStudio1 from "@/assets/clients/client-studio-1.jpg.asset.json";
+import clientTables from "@/assets/clients/client-tables.jpg.asset.json";
+import clientPartners from "@/assets/clients/client-partners.jpg.asset.json";
+import clientMeeting from "@/assets/clients/client-meeting.jpg.asset.json";
+import clientRoulette from "@/assets/clients/client-roulette.jpg.asset.json";
+import clientCamera from "@/assets/clients/client-camera.jpg.asset.json";
+import clientWalkthrough from "@/assets/clients/client-walkthrough.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
