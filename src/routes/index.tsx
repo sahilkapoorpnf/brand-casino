@@ -73,6 +73,7 @@ function Landing() {
       <Partnership />
       <FinalCTA />
       <Footer />
+      </div>
     </div>
   );
 }
