@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroVault from "@/assets/hero-vault.jpg";
+import heroRoulette from "@/assets/hero-roulette.jpg";
 import dashboardImg from "@/assets/dashboard.jpg";
 import liveStudioImg from "@/assets/live-studio.jpg";
 import securityImg from "@/assets/security.jpg";
@@ -81,39 +81,58 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative pt-24 pb-40 px-6 overflow-hidden border-b border-border">
+    <section
+      id="top"
+      className="relative min-h-[92vh] flex items-center px-6 overflow-hidden border-b border-border"
+    >
+      {/* Roulette background */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroRoulette}
+          alt="Luxury roulette wheel"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover object-center scale-110 animate-[spin_120s_linear_infinite] origin-center"
+          style={{ transformOrigin: "60% 70%" }}
+        />
+        {/* Vignette + readability layers */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
+        <div
+          className="absolute inset-0 opacity-[0.05] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+      </div>
+
+      {/* Ambient glows */}
       <div
         aria-hidden
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute -top-1/3 -left-40 size-[600px] rounded-full opacity-[0.18] blur-3xl"
+        className="absolute -top-1/4 -left-40 size-[600px] rounded-full opacity-30 blur-3xl z-0"
         style={{ background: "radial-gradient(circle, var(--magenta), transparent 70%)" }}
       />
       <div
         aria-hidden
-        className="absolute top-1/4 -right-40 size-[600px] rounded-full opacity-[0.18] blur-3xl"
-        style={{ background: "radial-gradient(circle, var(--cyan), transparent 70%)" }}
+        className="absolute bottom-0 right-0 size-[700px] rounded-full opacity-25 blur-3xl z-0"
+        style={{ background: "radial-gradient(circle, var(--accent), transparent 70%)" }}
       />
-      <div className="max-w-7xl mx-auto relative grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
-        <div className="animate-entrance">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/20 bg-accent-soft mb-8">
+
+      <div className="relative z-10 max-w-7xl mx-auto w-full py-28">
+        <div className="max-w-3xl animate-entrance">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-background/60 backdrop-blur-md mb-8">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
             </span>
             <span className="text-[10px] font-mono font-medium uppercase tracking-wider text-accent">
-              Enterprise Infrastructure · v4.0
+              The House Always Wins — When You Own It
             </span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance leading-[0.92] mb-8">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-balance leading-[0.9] mb-8">
             Bitdecentro —{" "}
             <span
               className="bg-clip-text text-transparent"
@@ -121,64 +140,63 @@ function Hero() {
             >
               Your Technology Partner
             </span>{" "}
-            <span className="text-muted-foreground">for Your Own Brand</span>
+            <span className="text-muted-foreground/80">for Your Own Brand</span>
           </h1>
 
-          <p className="text-lg md:text-2xl text-pretty max-w-2xl mb-4 font-mono">
+          <p className="text-xl md:text-3xl font-mono mb-5 tracking-tight">
             <span className="text-accent">Build.</span>{" "}
             <span className="text-cyan">Own.</span>{" "}
             <span className="text-emerald">Scale.</span>{" "}
             <span className="text-magenta">Monetize.</span>
           </p>
-          <p className="text-base md:text-lg text-muted-foreground text-pretty max-w-2xl mb-12">
-            We engineer the vault; you hold the keys. Sovereign casino infrastructure for global
-            operators who refuse to rent their future.
+          <p className="text-base md:text-lg text-muted-foreground text-pretty max-w-2xl mb-10">
+            Sovereign casino infrastructure for global operators who refuse to rent their future.
+            We engineer the vault — you spin the wheel and keep every chip.
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-14">
             <a
               href="#partnership"
-              className="px-7 py-4 bg-accent text-accent-foreground font-bold rounded-sm text-xs uppercase tracking-widest transition-all hover:shadow-glow active:scale-95"
+              className="group relative px-7 py-4 bg-accent text-accent-foreground font-bold rounded-sm text-xs uppercase tracking-widest transition-all hover:shadow-glow active:scale-95"
             >
-              Become a Technology Partner
+              Book Investor Meeting →
             </a>
             <a
               href="#showcase"
-              className="px-7 py-4 border border-border-strong font-bold rounded-sm text-xs uppercase tracking-widest hover:bg-surface transition-colors"
+              className="px-7 py-4 border border-border-strong bg-background/40 backdrop-blur-sm font-bold rounded-sm text-xs uppercase tracking-widest hover:bg-surface transition-colors"
             >
-              View Showcase
+              Start Partnership
             </a>
           </div>
-        </div>
 
-        <div className="relative animate-entrance [animation-delay:200ms] hidden lg:block">
-          <div className="absolute -inset-8 blur-3xl rounded-full opacity-60"
-            style={{ background: "var(--gradient-spectrum)" }} />
-          <div className="relative border border-border-strong bg-surface overflow-hidden rounded-sm">
-            <img
-              src={heroVault}
-              alt="Bronze casino vault representing technology ownership"
-              width={1600}
-              height={1200}
-              className="w-full h-auto object-cover aspect-[4/5]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
-              <span className="text-muted-foreground">Asset_ID</span>
-              <span className="text-accent">BDC-VAULT-001</span>
-            </div>
+          {/* Inline metric strip */}
+          <div className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] border-t border-border-strong pt-6 max-w-2xl">
+            <Metric label="Uptime" value="99.999%" color="text-emerald" />
+            <Metric label="TPS" value="24,500/s" color="text-cyan" />
+            <Metric label="Latency" value="<12ms" color="text-accent" />
+            <Metric label="Volume" value="$1.2B YTD" color="text-magenta" />
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 inset-x-0 bg-accent-soft border-t border-border py-4 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 flex flex-wrap gap-x-10 gap-y-2 font-mono text-[11px]">
-          <Metric label="Uptime" value="99.999%" color="text-emerald" />
-          <Metric label="TPS" value="24,500/s" color="text-cyan" />
-          <Metric label="Volume" value="$1.2B YTD" color="text-accent" />
-          <Metric label="Sec_Audit" value="Passed_2025" color="text-magenta" />
-          <Metric label="Latency" value="<12ms" color="text-emerald" />
-        </div>
+      {/* Floating chip cluster (decorative) */}
+      <div
+        aria-hidden
+        className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-3 z-10 font-mono text-[10px] uppercase tracking-widest"
+      >
+        {[
+          { l: "Red 36", c: "text-destructive" },
+          { l: "Black 17", c: "text-foreground" },
+          { l: "Green 00", c: "text-emerald" },
+        ].map((b) => (
+          <div
+            key={b.l}
+            className="px-3 py-2 border border-border-strong bg-background/70 backdrop-blur-md rounded-sm"
+          >
+            <span className={b.c}>● </span>
+            <span className="text-muted-foreground">{b.l}</span>
+          </div>
+        ))}
       </div>
     </section>
   );
